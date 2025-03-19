@@ -1,6 +1,6 @@
 @import url(/CSS/reset.css);
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 body {
 	font-size: 16px;
@@ -20,7 +20,7 @@ nav {
 	margin: 0px 20px;
 	display: flex;
 	gap: 20px;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
 }
 
@@ -33,7 +33,7 @@ nav {
 	max-width: 750px;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 30px;
+	gap: 50px;
 }
 
 .navmenu li {
@@ -82,28 +82,30 @@ nav {
 
 /*   main   */
 
+/*	  welcome   */
 main {
 	flex: 1;
 }
 
 .container {
-	max-width: 1480px;
+	max-width: 1940px;
 	margin: 0 auto;
 }
 
 .welcome {
 	max-width: 100%;
-	max-height: 500px;
+	height: 560px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 200px;
+	margin-bottom: 30px;
 }
 
 .welcome-text {
-	max-width: 500px;
+	max-width: 550px;
 	margin: 0 20px;
 	text-align: center;
+	flex: 1;
 }
 
 .welcome-text h4 {
@@ -111,52 +113,88 @@ main {
 	font-size: 50px;
 	margin-bottom: 20px;
 	text-transform: uppercase;
-	font-family: Inter;
+	font-family: Open Sans, sans-serif;
+	line-height: 60px;
+	letter-spacing: -4px;
 	text-align: center;
 }
 
 .welcome-text p {
 	font-size: 18px;
+	font-weight: 600;
 }
 
 .welcome-text span {
 	color: rgb(31, 31, 195);
-	font-weight: 500;
-	font-size: 18px;
 }
 
 .welcome-image {
-	min-width: 720px;
-	max-height: 450px;
-	margin: 0 20px;
-	position: relative;
+	min-width: 600px;
+	max-width: 900px;
+	flex: 1;
+}
+
+/*   adventages   */
+
+.advantages {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+
+.advantages-text {
+	font-weight: 600;
+	font-size: 40px;
+	font-family: Open Sans, sans-serif;
+	letter-spacing: -1px;
+}
+
+.advantages-text span {
+	color: rgb(31, 31, 195);
+	text-transform: uppercase;
+}
+
+.advantages-flexblock {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 40px;
+	flex-wrap: wrap;
+}
+
+.advantages-box {
+	height: 500px;
+	border-radius: 10px;
+	margin: 10px;
+	background-color: #F0F0F0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	flex: 1;
 }
 
-
-
-.welcome-text-image {
-	display: flex;
-	gap: 50px;
-	position: absolute;
-	bottom: -100px;
-	z-index: 10;
+.advantages-box-image img {
+	width: 540px;
+	height: 300px;
+	border-radius: 10px;
+	margin: 15px;
+	overflow: hidden;
 }
 
-.welcome-text-image div {
-	width: 340px;
-	height: 200px;
-	background-color: #F4F6FA;
-	border-radius: 20px;
-	padding: 15px;
-	font-weight: 600;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 0px 32px 15px -7px rgba(66, 68, 90, 1);
+.advantages-box-text {
+	padding: 0 20px;
+	font-size: 20px;
+	font-weight: 500;
+	overflow: hidden;
+}
+
+.advantages-box-text span {
+	font-size: 22px;
+	color: rgb(31, 31, 195);
+	text-transform: uppercase;
 }
 
 

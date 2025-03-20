@@ -1,14 +1,20 @@
 @import url(/CSS/reset.css);
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 body {
 	font-size: 16px;
-	height: 2000px;
+	height: 2500px;
 	background-color: rgb(255, 255, 255);
 	font-family: Montserrat, sans-serif;
 	display: flex;
 	flex-direction: column;
+}
+
+.container {
+	max-width: 1940px;
+	margin: 0 auto;
 }
 
 /*   header   */
@@ -87,10 +93,7 @@ main {
 	flex: 1;
 }
 
-.container {
-	max-width: 1940px;
-	margin: 0 auto;
-}
+
 
 .welcome {
 	max-width: 100%;
@@ -98,7 +101,7 @@ main {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 .welcome-text {
@@ -137,11 +140,7 @@ main {
 /*   adventages   */
 
 .advantages {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 30px;
+	margin-bottom: 20px;
 }
 
 .advantages-text {
@@ -161,42 +160,42 @@ main {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 40px;
-	flex-wrap: wrap;
+	gap: 50px;
+	flex-wrap: nowrap;
 }
 
 .advantages-box {
-	height: 500px;
-	border-radius: 10px;
-	margin: 10px;
-	background-color: #F0F0F0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	min-width: 480px;
+	height: 300px;
+	margin: 0 20px;
 	flex: 1;
 }
 
-.advantages-box-image img {
-	width: 540px;
-	height: 300px;
-	border-radius: 10px;
-	margin: 15px;
-	overflow: hidden;
+.advantages-box:nth-child(1){
+	background: linear-gradient(to right, black 30%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0) 100%), 
+   url('/img/tirehelp.jpg') 130px -50px/cover no-repeat;
 }
 
-.advantages-box-text {
-	padding: 0 20px;
-	font-size: 20px;
-	font-weight: 500;
-	overflow: hidden;
+.advantages-box:nth-child(2){
+	background: linear-gradient(to right, black 30%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0) 100%), 
+   url('/img/fastandreliable.jpg') 130px 0/cover no-repeat;
 }
 
-.advantages-box-text span {
-	font-size: 22px;
-	color: rgb(31, 31, 195);
+.advantages-box:nth-child(3){
+	background: linear-gradient(to right, black 30%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0) 100%), 
+   url('/img/flashlightonhead.jpg') 130px -50px/cover no-repeat;
+}
+
+.advantages-text {
+	font-family: Roboto Condensed;
+	max-width: 300px;
+	height: 100%;
+	padding: 20px;
+	color: white;
 	text-transform: uppercase;
+	display: flex;
+	align-items: center;
 }
-
 
 /*  footer  */
 

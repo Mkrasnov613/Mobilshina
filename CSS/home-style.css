@@ -96,12 +96,14 @@ main {
 
 
 .welcome {
+	position: relative;
+	z-index: 1;
 	max-width: 100%;
 	height: 560px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 20px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-text {
@@ -141,6 +143,10 @@ main {
 
 .advantages {
 	margin-bottom: 20px;
+	height: 560px;
+	background-color: #f2f2f6;
+	position: relative;
+	z-index: 0;
 }
 
 .advantages-text {
@@ -157,6 +163,7 @@ main {
 
 .advantages-flexblock {
 	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -166,14 +173,14 @@ main {
 
 .advantages-box {
 	min-width: 480px;
-	height: 300px;
+	height: 350px;
 	margin: 0 20px;
 	flex: 1;
 }
 
 .advantages-box:nth-child(1){
 	background: linear-gradient(to right, black 30%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0) 100%), 
-   url('/img/tirehelp.jpg') 130px -50px/cover no-repeat;
+   url('/img/tirehelp.jpg') 130px 0/cover no-repeat;
 }
 
 .advantages-box:nth-child(2){
@@ -183,7 +190,7 @@ main {
 
 .advantages-box:nth-child(3){
 	background: linear-gradient(to right, black 30%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0) 100%), 
-   url('/img/flashlightonhead.jpg') 130px -50px/cover no-repeat;
+   url('/img/flashlightonhead.jpg') 130px 0/cover no-repeat;
 }
 
 .advantages-text {

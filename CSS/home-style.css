@@ -206,8 +206,50 @@ main {
 
 /*  footer  */
 
-footer {
-	background-color: black;
+.footer-main {
+	background-color: #f2f2f6;
 	width: 100%;
-	height: 100px;
-}
+	height: 280px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+ }
+ 
+ .footer-image {
+	max-width: 160px;
+	margin-top: 30px;
+ }
+ 
+ .footer-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	gap: 50px;
+ }
+ 
+ .footer-info div img {
+	width: 20px;
+ }
+ 
+ .footer-info div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	font-size: 24px;
+	width: 350px;
+	font-weight: 500;
+ }
+ 
+ .footer-footer {
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #e7e7e8;
+	font-weight: 500;
+ }

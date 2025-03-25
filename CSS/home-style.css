@@ -80,11 +80,30 @@ nav {
 }
 
 .contacts {
+	display: flex;
+	align-self: normal;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
 	max-width: 250px;
+	font-weight: 600;
 }
-.contacts h6 {
-	font-weight: 500;
+
+.contacts div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
+
+.header-phone {
+	max-width: 30px;
+}
+
+.viber-logo {
+	max-width: 50px;
+}
+
 
 /*   main   */
 
@@ -209,17 +228,11 @@ main {
 .footer-main {
 	background-color: #f2f2f6;
 	width: 100%;
-	height: 280px;
+	height: 100px;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	flex: 1;
- }
- 
- .footer-image {
-	max-width: 160px;
-	margin-top: 30px;
  }
  
  .footer-info {

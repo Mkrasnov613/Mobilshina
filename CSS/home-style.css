@@ -1,122 +1,11 @@
 @import url(/CSS/reset.css);
+@import url(/CSS/header\,footer-styles.css);
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-body {
-	font-size: 16px;
-	height: 2300px;
-	background-color: rgb(255, 255, 255);
-	font-family: Montserrat, sans-serif;
-	display: flex;
-	flex-direction: column;
-}
-
-.container {
-	max-width: 1940px;
-	margin: 0 auto;
-}
-
-/*   header   */
-header {
-	margin-bottom: 50px;
-}
-
-nav {
-	margin: 0px 20px;
-	display: flex;
-	gap: 20px;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.logo {
-	cursor: pointer;
-	min-width: 200px;
-}
-
-.navmenu {
-	max-width: 750px;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 50px;
-}
-
-.navmenu li {
-	position: relative; /* Для псевдоэлемента */
-	text-transform: capitalize;
-	color: rgb(126, 126, 149);
-	font-weight: 600;
-	cursor: pointer;
-}
-
-.navmenu li.active {
-	color: rgb(31, 31, 195);
-}
-
-.navmenu li::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: -3px; /* Расположение под текстом */
-	width: 100%;
-	height: 2px;
-	background-color: rgb(31, 31, 195);
-	transform: scaleX(0); /* Начально скрыта */
-	transform-origin: center;
-	transition: transform 0.3s ease-in-out; /* Анимация появления */
-}
-
-.navmenu li:hover {
-	color: rgb(31, 31, 195);
-}
-
-.navmenu li:hover::after {
-	transform: scaleX(1); /* При ховере линия растягивается */
-}
-
-.navmenu li:active {
-	color: rgb(126, 126, 149);
-}
-
-.contacts {
-	display: flex;
-	align-self: normal;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-	width: 270px;
-	font-weight: 600;
-}
-
-.contacts div {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 3px;
-	width: 200px;
-}
-
-.contacts-telegram {
-	max-width: 1000px;
-}
-
-.contacts div img {
-	max-width: 30px;
-}
-
-.contacts div:nth-child(2) img {
-	max-width: 27px;
-}
-/*   main   */
 
 /*	  welcome   */
-main {
-	flex: 1;
-}
-
-
-
 .welcome {
 	position: relative;
 	z-index: 1;
@@ -163,7 +52,6 @@ main {
 /*   adventages   */
 
 .advantages {
-	margin-bottom: 100px;
 	height: 560px;
 	background-color: #f2f2f6;
 	position: relative;
@@ -228,11 +116,14 @@ main {
 /*   time   */
 
 .time-section {
+	padding: 50px 0;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	gap: 50px;
 	position: relative;
+	background: rgb(100,95,187);
+	background: linear-gradient(90deg, rgba(100,95,187,1) 0%, rgba(100,100,194,1) 35%, rgba(0,212,255,1) 100%);
 }
 
 .time-section__text {
@@ -274,6 +165,10 @@ main {
 	background-color: #3399ff;
 }
 
+.time-section__text button:active {
+	background-color: #73b9ff
+}
+
 .time-section__text img {
 	display: inline-block;
 	max-width: 20px;
@@ -295,47 +190,3 @@ main {
    transform: translate(-50%, -50%);
    z-index: 1;
 }
-
-/*  footer  */
-
-.footer-main {
-	background-color: #f2f2f6;
-	width: 100%;
-	height: 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 1;
- }
- 
- .footer-info {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	gap: 50px;
- }
- 
- .footer-info div img {
-	width: 20px;
- }
- 
- .footer-info div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-	font-size: 24px;
-	width: 350px;
-	font-weight: 500;
- }
- 
- .footer-footer {
-	height: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #e7e7e8;
-	font-weight: 500;
- }

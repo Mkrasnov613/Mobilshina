@@ -5,7 +5,7 @@
 
 body {
 	font-size: 16px;
-	height: 2500px;
+	height: 2300px;
 	background-color: rgb(255, 255, 255);
 	font-family: Montserrat, sans-serif;
 	display: flex;
@@ -85,26 +85,29 @@ nav {
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	max-width: 250px;
+	width: 270px;
 	font-weight: 600;
 }
 
 .contacts div {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	gap: 10px;
+	gap: 3px;
+	width: 200px;
 }
 
-.header-phone {
+.contacts-telegram {
+	max-width: 1000px;
+}
+
+.contacts div img {
 	max-width: 30px;
 }
 
-.viber-logo {
-	max-width: 50px;
+.contacts div:nth-child(2) img {
+	max-width: 27px;
 }
-
-
 /*   main   */
 
 /*	  welcome   */
@@ -122,7 +125,6 @@ main {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-text {
@@ -161,7 +163,7 @@ main {
 /*   adventages   */
 
 .advantages {
-	margin-bottom: 20px;
+	margin-bottom: 100px;
 	height: 560px;
 	background-color: #f2f2f6;
 	position: relative;
@@ -221,6 +223,77 @@ main {
 	text-transform: uppercase;
 	display: flex;
 	align-items: center;
+}
+
+/*   time   */
+
+.time-section {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 50px;
+	position: relative;
+}
+
+.time-section__text {
+	max-width: 500px;
+	text-align: center;
+}
+
+.time-section__text h3 {
+	font-family: Open Sans, sans-serif;
+	font-size: 40px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.time-section__text p {
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+
+.time-section__text button {
+	background-color: rgb(57, 57, 249);
+	font-weight: 500;
+	border-radius: 10px;
+	color: white;
+	height: 45px;
+	max-width: 200px;
+	overflow: hidden;
+	padding: 0 10px;
+	cursor: pointer;
+	box-shadow: 0 8px 0px #3c354a;
+   transition-duration: 0.5s;
+}
+
+.time-section__text button:hover {
+	top: 5px;
+	box-shadow: 0 3px 0px #3c354a;
+	color: black;
+	background-color: #3399ff;
+}
+
+.time-section__text img {
+	display: inline-block;
+	max-width: 20px;
+}
+
+.time-section__image {
+	position: relative;
+	width: 700px; /* Размер круга */
+	height: 700px;
+	background-color: #3399ff; /* Голубой цвет */
+	border-radius: 50%;
+}
+
+.time-section__image img {
+	position: absolute;
+	max-width: 1050px;
+	left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1;
 }
 
 /*  footer  */

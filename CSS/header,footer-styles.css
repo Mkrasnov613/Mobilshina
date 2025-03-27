@@ -113,6 +113,10 @@ main {
 
 /*   footer   */
 
+.footer {
+	padding-top: 50px;
+}
+
 .footer-main {
 	background-color: #f2f2f6;
 	width: 100%;

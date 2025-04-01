@@ -124,9 +124,10 @@ nav {
 	height: 3px; 
 	border-radius: 10px;
 	background: black;
+	transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1220px) {
 	.navmenu {
 		 display: none;
 	}
@@ -137,19 +138,6 @@ nav {
 		 display: block;
 	}
 }
-
-
-.dropdown-wrapper-body {
-	position: fixed;
-	top: 0;
-	right: -100%; 
-	width: 100%;
-	height: 100%;
-	background: rgba(157, 156, 156, 0.662);
-	transition: right 0.3s ease;
-	z-index: 2;
-}
-
 
 .dropdown-wrapper {
 	position: fixed;
@@ -167,6 +155,19 @@ nav {
 	align-items: flex-end;
 }
 
+.dropdown-wrapper-body {
+	position: fixed;
+	top: 0;
+	right: -100%; 
+	width: 100%;
+	height: 100%;
+	background: rgba(157, 156, 156);
+	opacity: 0;
+	transition-duration: 400ms;
+	transition-property: opacity; 
+	z-index: 2;
+}
+
 .wrapper-btn {
 	display: none;
 	width: 100%;
@@ -177,13 +178,29 @@ nav {
 	margin-right: 20px;
 }
 
-.dropdown-wrapper.open,
 .dropdown-wrapper-body.open {
-    right: 0; /* Сдвигаем на место */
+	right: 0;
+	opacity: 0.5;
+}
+
+.dropdown-wrapper.open {
+   right: 0; 
 }
 
 .dropdown-wrapper.open .wrapper-btn {
 	display: flex;
+}
+
+.dropdown-wrapper .dropdown-btn:hover span:nth-child(1) {
+	transform: translateY(10px) rotate(45deg);
+}
+
+.dropdown-wrapper .dropdown-btn:hover span:nth-child(2) {
+	opacity: 0;
+}
+
+.dropdown-wrapper .dropdown-btn:hover span:nth-child(3) {
+	transform: translateY(-7px) rotate(-45deg);
 }
 
 .dropdown-content ul {
@@ -205,8 +222,6 @@ nav {
 }
 
 
-
-
 /*   main   */
 
 main {
@@ -222,41 +237,66 @@ main {
 .footer-main {
 	background-color: #f2f2f6;
 	width: 100%;
-	height: 100px;
+	height: 80px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex: 1;
- }
+}
  
- .footer-info {
+.footer-info {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
-	width: 100%;
+	width: 1000px;
 	height: 100%;
-	gap: 50px;
- }
- 
- .footer-info div img {
-	width: 20px;
- }
- 
- .footer-info div {
+	gap: 10px;
+}
+
+.footer-info div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-	font-size: 24px;
+	font-size: 18px;
 	width: 350px;
 	font-weight: 500;
- }
+}
+
+.footer-info div img {
+	width: 20px;
+}
  
- .footer-footer {
+.footer-footer {
 	height: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #e7e7e8;
 	font-weight: 500;
- }
+}
+
+@media (max-width: 1220px) {
+	.footer-info {
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 767px) {
+	.footer-main {
+		height: 60px;
+	}
+
+	.footer-info div {
+		font-size: 16px;
+		width: 200px;
+	}
+
+	.footer-info div img {
+		width: 15px;
+	}
+
+	.footer-info {
+		gap: 20px;
+	}
+}

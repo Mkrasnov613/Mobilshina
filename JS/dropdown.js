@@ -1,6 +1,6 @@
-var dropdownButton = document.getElementById('dropdown-btn'); // Кнопка открытия
-var dropdown = document.querySelector('.dropdown-wrapper'); // Меню
-var dropdownBody = document.querySelector('.dropdown-wrapper-body'); // Фоновая обертка
+var dropdownButton = document.getElementById('dropdown-btn');
+var dropdown = document.querySelector('.dropdown-wrapper');
+var dropdownBody = document.querySelector('.dropdown-wrapper-body');
 var dropdownCloseButton = document.querySelector('.dropdown-wrapper .dropdown-btn');
 
 dropdownButton.addEventListener('click', function (e) {

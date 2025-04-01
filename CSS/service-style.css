@@ -1,0 +1,113 @@
+@import url(/CSS/reset.css);
+@import url(/CSS/header\,footer-styles.css);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+.services-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: 50px;
+	margin: 0 20px;
+}
+
+.services-title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-family: Open Sans;
+}
+
+.services-title h3 {
+	font-weight: 700;
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.services-title p {
+	width: 540px;
+}
+
+.services-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 40px;
+	padding: 0px 20px 50px;
+	width: 100%;;
+}
+
+.services-grid article {
+	max-width: 350px;
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 15px;
+	box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	text-align: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-grid article:nth-child(even) {
+	background: linear-gradient(135deg, rgba(85, 145, 255, 0.9) 0%, rgba(44, 76, 255, 0.9) 100%);
+}
+
+.services-grid article:nth-child(even) h4,
+.services-grid article:nth-child(even) p {
+	color: white;
+}
+
+.services-grid article:nth-child(even) img {
+	filter: brightness(0) invert(1);
+}
+
+.services-grid article:hover {
+	transform: scale(1.05);
+	box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.services-grid article img {
+	max-width: 60px;
+}
+
+.services-grid article h4 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-size: 18px;
+	color: #333;
+	text-transform: capitalize;
+}
+
+.services-grid article p {
+	font-size: 14px;
+	opacity: 0.9;
+	color: #333;
+  	line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+	.services-grid {
+	  	flex-direction: column;
+	  	align-items: center;
+	  	gap: 20px;
+	}
+ 
+	.services-title h3 {
+	  	font-size: 30px;
+	}
+ 
+	.services-grid article {
+		width: 90%;
+    	max-width: 400px;
+	 	padding: 20px;
+	}
+ }

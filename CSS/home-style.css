@@ -1,8 +1,4 @@
-@import url(/CSS/reset.css);
 @import url(/CSS/header\,footer-styles.css);
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 /*	  welcome   */
 .welcome {
@@ -29,11 +25,6 @@
   text-transform: uppercase;
   font-family: Open Sans, sans-serif;
   line-height: 60px;
-<<<<<<< HEAD
-  letter-spacing: -4px;
-  text-align: center;
-=======
->>>>>>> 02f685c (Created and added "clients" and "company" pages. Connected APIs and server.)
 }
 
 .welcome-text p {
@@ -68,7 +59,6 @@
 /*   how it works   */
 
 .howitworks-section {
-	background-color: #7facff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,15 +68,6 @@
 }
 
 .howitworks-title {
-<<<<<<< HEAD
-  font-family: Open Sans, sans-serif;
-	font-weight: 600;
-  font-size: 35px;
-	word-spacing: -4px;
-	text-transform: capitalize;
-  letter-spacing: 1.5px;
-  color: #112447;
-=======
   font-weight: 600;
   font-size: 35px;
   word-spacing: -5px;
@@ -94,7 +75,6 @@
   text-transform: capitalize;
   letter-spacing: 1px;
   text-align: center;
->>>>>>> 02f685c (Created and added "clients" and "company" pages. Connected APIs and server.)
 }
 
 .howitworks__steps-container {
@@ -197,13 +177,6 @@
   align-items: center;
   gap: 50px;
   height: 100%;
-  background: rgb(100, 95, 187);
-  background: linear-gradient(
-    90deg,
-    rgba(100, 95, 187, 1) 0%,
-    rgba(100, 100, 194, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
 }
 
 .time-section__text {

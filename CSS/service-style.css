@@ -29,7 +29,7 @@
 }
 
 .services-title p {
-  width: 540px;
+  max-width: 540px;
 }
 
 .services-flex {
@@ -112,6 +112,7 @@
     width: 90%;
     max-width: 400px;
     padding: 20px;
+		flex: 1 1 auto;
   }
 }
 

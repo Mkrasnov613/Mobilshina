@@ -6,6 +6,7 @@ body {
 	font-family: Montserrat, sans-serif;
 	display: flex;
 	flex-direction: column;
+	overflow-x: hidden;
 }
 
 .container {
@@ -95,6 +96,7 @@ nav {
 
 .contacts a {
 	cursor: pointer;
+	color: hsl(240, 73%, 65%);
 }
 
 .contacts img {
@@ -151,6 +153,8 @@ nav {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-end;
+	padding: 10px;
+	gap: 80px;
 }
 
 .dropdown-wrapper-body {
@@ -169,7 +173,7 @@ nav {
 .wrapper-btn {
 	display: none;
 	width: 100%;
-	height: 127px;
+	height: 106px;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
@@ -189,15 +193,15 @@ nav {
 	display: flex;
 }
 
-.dropdown-wrapper .dropdown-btn:hover span:nth-child(1) {
+.dropdown-wrapper .dropdown-btn span:nth-child(1) {
 	transform: translateY(10px) rotate(45deg);
 }
 
-.dropdown-wrapper .dropdown-btn:hover span:nth-child(2) {
+.dropdown-wrapper .dropdown-btn span:nth-child(2) {
 	opacity: 0;
 }
 
-.dropdown-wrapper .dropdown-btn:hover span:nth-child(3) {
+.dropdown-wrapper .dropdown-btn span:nth-child(3) {
 	transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -209,13 +213,14 @@ nav {
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 30px;
 }
 
 .dropdown-content ul li {
 	text-transform: capitalize;
 	color: rgb(126, 126, 149);
 	font-weight: 600;
+	font-size: 20px;
 	cursor: pointer;
 	text-align: right;
 }
@@ -224,18 +229,53 @@ nav {
 	color: rgb(31, 31, 195);
 }
 
+.dropdown-footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 20px;
+	padding-bottom: 20px;
+}
+
 .dropdown-footer img {
 	max-width: 30px;
 }
 
-.dropdown-footer {
+.dropdown-footer .contact-information {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	height: 100px;
-	width: 100%;
 	gap: 10px;
 }
+
+.dropdown-footer .contact-information .contact {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.dropdown-footer .contact-information img {
+	max-width: 30px;
+}
+
+.dropdown-footer .contact-information .contact h6 {
+	color: hsl(0, 0%, 50%);
+	font-size: 14px;
+}
+
+.dropdown-footer .contact-information .contact p {
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.dropdown-footer .contact-information .contact a {
+	font-weight: 500;
+	font-size: 16px;
+	color: hsl(227, 100%, 60%);
+	cursor: pointer;
+}
+
+
 
 /*   main   */
 
@@ -244,75 +284,13 @@ main {
 }
 
 /*   footer   */
-
+ 
 .footer {
-	padding-top: 50px;
-}
-
-.footer-main {
-	background-color: #f2f2f6;
-	width: 100%;
-	height: 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex: 1;
-}
- 
-.footer-info {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	width: 1000px;
-	height: 100%;
-	gap: 10px;
-	padding: 20px;
-}
-
-.footer-info div {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-	font-size: 18px;
-	width: 350px;
-	font-weight: 500;
-}
-
-.footer-info div img {
-	width: 20px;
-}
- 
-.footer-footer {
+	margin-top: 20px;
 	height: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #e7e7e8;
 	font-weight: 500;
-}
-
-@media (max-width: 1220px) {
-	.footer-info {
-		flex-wrap: wrap;
-	}
-}
-
-@media (max-width: 767px) {
-	.footer-main {
-		height: 80px;
-	}
-
-	.footer-info div {
-		font-size: 16px;
-		width: 200px;
-	}
-
-	.footer-info div img {
-		width: 15px;
-	}
-
-	.footer-info {
-		gap: 20px;
-	}
 }

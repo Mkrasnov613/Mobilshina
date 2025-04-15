@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/clients-style.css" />
+    <title>Клієнтам</title>
+   	<script type="text/javascript">
+			window.onload = function () {
+				document.getElementById('contact-form').addEventListener('submit', function (event) {
+					event.preventDefault();
+		
+					const formData = new FormData(this);
+					const data = Object.fromEntries(formData.entries());
+					const form = document.getElementById('contact-form')
+		
+					fetch('http://localhost:3000/api/send-email', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(data)
+					})
+					.then(res => res.json())
+					.then(res => {
+						if (res.success) {
+							const message = document.createElement('p');
+							message.textContent = "Ваше повідомлення надіслано!"
+							form.append(message);
+							this.reset();
+						} else {
+							alert('Помилка: ' + res.error);
+						}
+					})
+					.catch(err => {
+						console.error(err);
+						alert('Сервер не відповідає.');
+					});
+				});
+			};
+	</script>
+	
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <div class="logo">
+            <a href="/html/home.html"><img src="/img/logo.gif" alt="" /></a>
+          </div>
+          <ul class="navmenu">
+            <li><a href="/html/home.html">Головна</a></li>
+            <li><a href="/html/company.html">про компанію</a></li>
+            <li><a href="/html/service.html">Послуги</a></li>
+            <li><a href="/html/prices.html">Ціни</a></li>
+            <li class="active"><a href="/html/clients.html">Контакти</a></li>
+          </ul>
+          <div class="contacts">
+            <img class="header-phone" src="/img/phoneheader.png" alt="" />
+            <a href="tel:+380958780726">+38 (095) 878 07 26</a>
+          </div>
+          <div class="nav-btn">
+            <button id="dropdown-btn" class="dropdown-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+          <div class="dropdown-wrapper-body"></div>
+          <div class="dropdown-wrapper">
+            <div class="wrapper-btn">
+              <button class="dropdown-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+            <div class="dropdown-content">
+              <nav>
+                <ul>
+                  <li><a href="/html/home.html">Головна</a></li>
+                  <li><a href="/html/company.html">про компанію</a></li>
+                  <li><a href="/html/service.html">Послуги</a></li>
+                  <li><a href="/html/prices.html">Ціни</a></li>
+                  <li class="active">
+                    <a href="/html/clients.html">Контакти</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+						<div class="dropdown-footer">
+							<div class="contact-information">
+                <img src="/img/mail.png" alt="" />
+                <div class="email contact">
+                  <h6>E-mail</h6>
+                  <p>mobilshina2010@gmail.com</p>
+                </div>
+              </div>
+              <div class="contact-information">
+                <img src="/img/phone_9298511.png" alt="" />
+                <div class="phonenumber contact">
+                  <h6>Phone number</h6>
+                  <a href="tel:+380958780726">+38 (095) 878 07 26</a>
+                </div>
+              </div>
+						</div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <section class="clients__formblock">
+          <div class="contact-block">
+            <h1>Зв'яжіться з Нами</h1>
+            <p>
+              Команда кваліфікованих фахівців візьме на себе увесь клопіт по
+              обслуговуванню Ваших автомоблів в сфері шиномонтажу. Корпоративним
+              клієнтам, маючим власний автопарк, який склдається з трьох і
+              більше автомобілів компанія «Мобілшина» пропонує спеціальні умови
+              обслуговування.
+            </p>
+            <div class="contact-information-box">
+              <div class="contact-information">
+                <img src="/img/mail.png" alt="" />
+                <div class="email contact">
+                  <h6>E-mail</h6>
+                  <p>mobilshina2010@gmail.com</p>
+                </div>
+              </div>
+              <div class="contact-information">
+                <img src="/img/phone_9298511.png" alt="" />
+                <div class="phonenumber contact">
+                  <h6>Phone number</h6>
+                  <a href="tel:+380958780726">+38 (095) 878 07 26</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form id="contact-form">
+            <h5>Для співпраці пишіть на пошту або за допомогою форми</h5>
+            <label>Ім'я та Призвіще</label>
+            <input type="text" name="name" required />
+            <label>E-mail</label>
+            <input type="email" name="email" required />
+            <label>Повідомлення</label>
+            <textarea name="message" required></textarea>
+            <input type="submit" value="Відправити" />
+          </form>
+        </section>
+      </div>
+    </main>
+    <footer>
+        <div class="footer">
+          <p>ФОП "Краснов Сергій Ігорович"</p>
+        </div>
+      </div>
+    </footer>
+    <script src="/JS/dropdown.js"></script>
+  </body>
+</html>

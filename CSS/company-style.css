@@ -126,3 +126,12 @@ rgba(0, 0, 0, 0.7)
 ), url(/img/sponsor.png)   0/ cover no-repeat;
 	}
 }
+
+@media (max-width: 500px) {
+	.company__sponsor {
+		background: linear-gradient(
+rgba(0, 0, 0, 0.7), 
+rgba(0, 0, 0, 0.7)
+), url(/img/sponsor.png)   -700px 0px/ cover no-repeat;
+	}
+}

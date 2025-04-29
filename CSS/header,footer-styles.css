@@ -40,7 +40,19 @@ nav {
 
 .logo {
 	cursor: pointer;
-	width: 150px;
+	width: 200px;
+}
+
+.logo-location {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	gap: 5px;
+}
+
+.logo-location img {
+	max-width: 30px;
 }
 
 .navmenu {
@@ -90,7 +102,7 @@ nav {
 	color: rgb(126, 126, 149);
 }
 
-.contacts {
+.info-phone {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -99,12 +111,12 @@ nav {
 	font-weight: 600;
 }
 
-.contacts a {
+.info-phone a {
 	cursor: pointer;
 	color: hsl(240, 73%, 65%);
 }
 
-.contacts img {
+.header-info img {
 	max-width: 30px;
 }
 
@@ -136,11 +148,21 @@ nav {
 	.navmenu {
 		 display: none;
 	}
-	.contacts {
+	.header-info {
 		 display: none;
 	}
 	.nav-btn {
 		 display: block;
+	}
+}
+
+@media (max-width: 500px) {
+	.logo {
+		max-width: 150px;
+		margin-left: -20px;
+	}
+	.logo-location img{
+		max-width: 20px;
 	}
 }
 
@@ -159,7 +181,7 @@ nav {
 	justify-content: flex-start;
 	align-items: flex-end;
 	padding: 10px;
-	gap: 80px;
+	gap: 40px;
 }
 
 .dropdown-wrapper-body {
@@ -178,11 +200,17 @@ nav {
 .wrapper-btn {
 	display: none;
 	width: 100%;
-	height: 106px;
+	min-height: 106px;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
 	margin-right: 20px;
+}
+
+@media (max-width: 500px) {
+	.wrapper-btn {
+		min-height: 70px;
+	}
 }
 
 .dropdown-wrapper-body.open {
@@ -236,11 +264,11 @@ nav {
 
 .dropdown-footer {
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 	gap: 20px;
 	padding-bottom: 20px;
+	width: 100%;
 }
 
 .dropdown-footer img {

@@ -77,10 +77,11 @@
 	flex-direction: column;
 }
 
-#contact-form h5 {
+#contact-form h2 {
 	font-weight: 500;
 	font-size: 18px;
 	margin-bottom: 20px;
+	font-family: Open Sans, sans-serif;
 }
 
 #contact-form input {
@@ -96,7 +97,11 @@
 	background-color: hsl(0, 0%, 95%);
 	margin-bottom: 20px;
 	padding: 10px;
-	border-radius: 10px;	
+	border-radius: 10px;
+	resize: vertical; 
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;	
 }
 
 #contact-form input:nth-child(8) {

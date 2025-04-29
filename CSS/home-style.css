@@ -2,7 +2,6 @@
 
 /*	  welcome   */
 .welcome {
-  position: relative;
   z-index: 1;
   max-width: 100%;
   min-height: 560px;
@@ -23,8 +22,7 @@
   font-size: 50px;
   margin-bottom: 20px;
   text-transform: uppercase;
-  font-family: Open Sans, sans-serif;
-  line-height: 60px;
+  font-family: Open Sans, sans-serif;  
 }
 
 .welcome-text p {
@@ -56,6 +54,21 @@
   }
 }
 
+@media (max-width: 500px) {
+	.welcome-text { 
+		max-width: 330px;
+	}
+
+	.welcome-text h1{ 
+		font-size: 35px;
+	}
+}
+
+@media (max-width: 350px) {
+	.welcome-text h1{ 
+		font-size: 30px;
+	}
+}
 /*   how it works   */
 
 .howitworks-section {
@@ -253,6 +266,7 @@
   .time-section {
     flex-direction: column;
     justify-content: space-between;
+		padding: 0;
   }
 
   .time-section__image {
@@ -266,7 +280,11 @@
 }
 
 @media (max-width: 992px) {
-  .time-section__image {
+  .time-section {
+		gap: 10px;
+	}
+	
+	.time-section__image {
     width: 400px;
     height: 400px;
   }
@@ -284,5 +302,35 @@
 
   .time-section__image img {
     max-width: 500px;
+  }
+}
+
+@media (max-width: 500px) {
+  .time-section__image {
+    width: 250px;
+    height: 250px;
+  }
+
+  .time-section__image img {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 350px) {
+	.time-section__image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .time-section__image img {
+    max-width: 300px; 
+  }  
+
+  .time-section__text h3 {
+    font-size: 30px;
+  }
+
+  .time-section__text p {
+    font-size: 16px;
   }
 }

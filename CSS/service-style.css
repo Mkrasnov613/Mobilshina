@@ -1,4 +1,4 @@
-@import url(/CSS/header\,footer-styles.css);
+@import url(/CSS/header,footer-styles.css);
 
 .services-section {
   display: flex;
@@ -108,7 +108,7 @@
     width: 90%;
     max-width: 400px;
     padding: 20px;
-		flex: 1 1 auto;
+    flex: 1 1 auto;
   }
 }
 

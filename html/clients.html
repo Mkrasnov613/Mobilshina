@@ -134,12 +134,13 @@
 			window.onload = function () {
 				document.getElementById('contact-form').addEventListener('submit', function (event) {
 					event.preventDefault();
-		
+					
+					const BASE_API_URL = 'https://mobilshina-6fsb.onrender.com';
 					const formData = new FormData(this);
 					const data = Object.fromEntries(formData.entries());
-					const form = document.getElementById('contact-form')
+					const form = document.getElementById('contact-form');
 		
-					fetch('http://localhost:3000/api/send-email', {
+					fetch('${BASE_API_URL}/api/send-email', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'

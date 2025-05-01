@@ -199,32 +199,33 @@
     </footer>
     <script src="/JS/dropdown.js"></script>
 		<script type="module">
-			fetch("http://localhost:3000/api/prices")
-  .then(res => res.json())
-  .then(data => {
-    const services = data.services?.items || [];
-    const priceInfo = data.priceInfo?.items || [];
+			const BASE_API_URL = "https://mobilshina.onrender.com";
+			fetch(`${BASE_API_URL}/api/prices`)
+  		.then(res => res.json())
+  		.then(data => {
+			const services = data.services?.items || [];
+			const priceInfo = data.priceInfo?.items || [];
 
-    services.forEach(item => {
-      const id = item.fields.priceId;
-      const price = item.fields.price;
-      const el = document.getElementById(id);
-      if (el) {
-        el.textContent = price;
-      }
-    });
+			services.forEach(item => {
+				const id = item.fields.priceId;
+				const price = item.fields.price;
+				const el = document.getElementById(id);
+				if (el) {
+					el.textContent = price;
+				}
+			});
 
-    if (priceInfo.length > 0) {
-      const dateRaw = priceInfo[0].fields.lastUpdateDate;
-      const dateObj = new Date(dateRaw);
-      const formatted = dateObj.toLocaleDateString("uk-UA");
-      const dateEl = document.getElementById("price-date");
+			if (priceInfo.length > 0) {
+				const dateRaw = priceInfo[0].fields.lastUpdateDate;
+				const dateObj = new Date(dateRaw);
+				const formatted = dateObj.toLocaleDateString("uk-UA");
+				const dateEl = document.getElementById("price-date");
 
-      dateEl.textContent = formatted;
-      dateEl.setAttribute("datetime", dateRaw);
-    }
-  })
-  .catch(console.error);
+				dateEl.textContent = formatted;
+				dateEl.setAttribute("datetime", dateRaw);
+			}
+		})
+		.catch(console.error);
 		</script>
   </body>
 </html>

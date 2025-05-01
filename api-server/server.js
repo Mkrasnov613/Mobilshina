@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 //prevents basic DDoS
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, 
+  max: 4, 
   message: { error: "Too many requests, please try again later." },
 });
 app.use(limiter);

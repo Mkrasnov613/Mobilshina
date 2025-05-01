@@ -150,8 +150,9 @@
 					.then(res => res.json())
 					.then(res => {
 						if (res.success) {
+							form.removeChild(message)
 							const message = document.createElement('p');
-							message.textContent = "Ваше повідомлення надіслано!"
+							message.textContent = "Ваше повідомлення надіслано!";
 							form.append(message);
 							this.reset();
 						} else {

@@ -24,7 +24,6 @@ const limiter = rateLimit({
   max: 4, 
   message: { error: "Too many requests, please try again later." },
 });
-app.use(limiter);
 
 // CORS Configuration
 app.use(
@@ -66,6 +65,7 @@ app.get("/api/prices", async (req, res) => {
 
 app.post(
   "/api/send-email",
+	limiter,
   [
     body("name").trim().escape().notEmpty(),
     body("email").isEmail().normalizeEmail(),

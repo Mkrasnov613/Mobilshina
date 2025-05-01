@@ -140,7 +140,7 @@
 					const data = Object.fromEntries(formData.entries());
 					const form = document.getElementById('contact-form');
 		
-					fetch('${BASE_API_URL}/api/send-email', {
+					fetch(`${BASE_API_URL}/api/send-email`, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json'

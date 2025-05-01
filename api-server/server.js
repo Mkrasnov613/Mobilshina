@@ -29,7 +29,7 @@ app.use(limiter);
 // CORS Configuration
 app.use(
   cors({
-    origin: "https://mobilshina.vercel.app",
+    origin: ["https://mobilshina.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
   })

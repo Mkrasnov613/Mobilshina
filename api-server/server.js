@@ -28,7 +28,7 @@ const limiter = rateLimit({
 // CORS Configuration
 app.use(
   cors({
-    origin: ["https://mobilshina.vercel.app"],
+    origin: ["https://mobilshina.vercel.app","https://mobilshina.com"],
     methods: ["GET", "POST"],
     credentials: true,
   })

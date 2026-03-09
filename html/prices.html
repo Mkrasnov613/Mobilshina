@@ -95,31 +95,31 @@
 							<span><img class="service-info-img" src="/img/phone-call-svgrepo-com.svg" alt="" /></span>
 						</div>
 						<div class="service-price">
-							<p>Вартість мінімального виклику з роботою</p>
+							<p></p>
 							<p id="price-min-call">...</p>
 						</div>
 						<div class="service-price">
-							<p>Кросовер, джип, R > 19</p>
+							<p></p>
 							<p id="price-suv">...</p>
 						</div>
 						<div class="service-price">
-							<p>З 18:00 до 07:00</p>
+							<p></p>
 							<p id="price-night">...</p>
 						</div>
 						<div class="service-price">
-							<p>Кожний боковий поріз</p>
+							<p></p>
 							<p id="price-cut">...</p>
 						</div>
 						<div class="service-price">
-							<p>Прокатка сталевого диску</p>
+							<p></p>
 							<p id="price-steel">...</p>
 						</div>
 						<div class="service-price">
-							<p>Ремонт легкосплавного диску</p>
+							<p></p>
 							<p id="price-alloy">...</p>
 						</div>
 						<div class="service-price">
-							<p>Виїзд шиномонтажу за місто</p>
+							<p></p>
 							<p id="price-out-city">...</p>
 						</div>
 					</article>
@@ -130,19 +130,19 @@
 							<span><img class="service-info-img" src="/img/tire.png" alt="" /></span>
 						</div>
 						<div class="service-price">
-							<p>12' - 18', сталевий, легкосплавний диск</p>
+							<p></p>
 							<p id="price-sedan">...</p>
 						</div>
 						<div class="service-price">
-							<p>16' - 18', кросовер, джип, мікроавтобус</p>
+							<p></p>
 							<p id="price-suv-change">...</p>
 						</div>
 						<div class="service-price">
-							<p>19' - 22', легкосплавний диск</p>
+							<p></p>
 							<p id="price-22inch">...</p>
 						</div>
 						<div class="service-price">
-							<p>RanFlat, низький профіль</p>
+							<p></p>
 							<p id="price-rft">...</p>
 						</div>
 					</article>
@@ -153,38 +153,38 @@
 							<span><img class="service-info-img" style="max-width: 40px" src="/img/trucksvgicon.svg" alt="" /></span>
 						</div>
 						<div class="service-price">
-							<p>по місту</p>
+							<p></p>
 							<p id="price-city">...</p>
 						</div>
 						<div class="service-price">
-							<p>по місту (з 20:00 до 07:00)</p>
+							<p></p>
 							<p id="price-city-night">...</p>
 						</div>
 						<div class="service-price">
-							<p>пос.Котовського</p>
+							<p></p>
 							<p id="price-kotovsky">...</p>
 						</div>
 						<div class="service-price">
-							<p>пос.Котовського (з 20:00 до 07:00)</p>
+							<p></p>
 							<p id="price-kotovsky-night">...</p>
 						</div>
 						<div class="service-price">
-							<p>Совіньон</p>
+							<p></p>
 							<p id="price-sovinyon">...</p>
 						</div>
 					</article>
 				
 					<article>
 						<div class="service-info">
-							<h5>Додаткові послуги</h5>
+							<h5></h5>
 							<span><img class="service-info-img" src="/img/icons8-tools-50.png" alt="" /></span>
 						</div>
 						<div class="service-price">
-							<p>Запуск двигуна (при розрядженому акумуляторі)</p>
+							<p></p>
 							<p id="price-start-engine">...</p>
 						</div>
 						<div class="service-price">
-							<p>Підвіз палива</p>
+							<p></p>
 							<p id="price-fuel">...</p>
 						</div>
 					</article>
@@ -209,9 +209,11 @@
 			services.forEach(item => {
 				const id = item.fields.priceId;
 				const price = item.fields.price;
+				const serviceName = item.fields.groupTitle
 				const el = document.getElementById(id);
 				if (el) {
 					el.textContent = price;
+					el.previousElementSibling.textContent = serviceName
 				}
 			});
 

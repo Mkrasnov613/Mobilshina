@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <title>Tire location pin</title>
+  <path d="M50 97C62 79 83 60 83 38A33 33 0 1 0 17 38C17 60 38 79 50 97Z" fill="#3D0BE0"/>
+  <circle cx="50" cy="38" r="21" fill="#fff"/>
+  <circle cx="50" cy="38" r="7" fill="#3D0BE0"/>
+  <rect x="47" y="17" width="6" height="15" rx="3" fill="#3D0BE0"/>
+  <rect x="47" y="17" width="6" height="15" rx="3" fill="#3D0BE0" transform="rotate(72 50 38)"/>
+  <rect x="47" y="17" width="6" height="15" rx="3" fill="#3D0BE0" transform="rotate(144 50 38)"/>
+  <rect x="47" y="17" width="6" height="15" rx="3" fill="#3D0BE0" transform="rotate(216 50 38)"/>
+  <rect x="47" y="17" width="6" height="15" rx="3" fill="#3D0BE0" transform="rotate(288 50 38)"/>
+</svg>

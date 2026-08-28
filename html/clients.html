@@ -12,7 +12,7 @@
     <meta property="og:type" content="website" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://site.com/html/clients.html" />
-		<link rel="icon" type="image/x-icon" href="/img/location-mobilshina.png">
+		<link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
     <link rel="stylesheet" href="/CSS/clients-style.css" />
     <title>Контакти – Мобільний Шиномонтаж Одеса | Мобілшина</title>
 
@@ -24,6 +24,24 @@
       gtag('js', new Date());
 
       gtag('config', 'AW-18400921245');
+    </script>
+
+    <!-- Event snippet for Контакт conversion page (phone call clicks) -->
+    <script>
+      function gtag_report_conversion_call(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-18400921245/dRXHCJH71OkcEJ2Nn8ZE',
+            'value': 1.0,
+            'currency': 'UAH',
+            'event_callback': callback
+        });
+        return false;
+      }
     </script>
   </head>
   <body>
@@ -48,7 +66,7 @@
         <div class="header-info">
 					<div class="info-phone">
           	<img src="/img/phoneheader.png" alt="" />
-          	<a href="tel:+380958780726">+38 (095) 878 07 26</a>
+          	<a href="tel:+380958780726" onclick="return gtag_report_conversion_call('tel:+380958780726');">+38 (095) 878 07 26</a>
 					</div>
         </div>
         <div class="nav-btn">
@@ -83,7 +101,7 @@
               <img src="/img/phone_9298511.png" alt="" />
               <div class="phonenumber contact">
                 <h6>Phone number</h6>
-                <a href="tel:+380958780726">+38 (095) 878 07 26</a>
+                <a href="tel:+380958780726" onclick="return gtag_report_conversion_call('tel:+380958780726');">+38 (095) 878 07 26</a>
               </div>
             </div>
           </div>
@@ -114,7 +132,7 @@
                 <img src="/img/phone_9298511.png" alt="" />
                 <div class="phonenumber contact">
                   <h6>Phone number</h6>
-                  <a href="tel:+380958780726">+38 (095) 878 07 26</a>
+                  <a href="tel:+380958780726" onclick="return gtag_report_conversion_call('tel:+380958780726');">+38 (095) 878 07 26</a>
                 </div>
               </div>
             </div>
@@ -168,6 +186,8 @@
 					.then(res => res.json())
 					.then(res => {
 						if (res.success) {
+							gtag_report_conversion_call();
+
 							const modal = document.getElementById('success-modal');
 							modal.style.display = 'flex';
 

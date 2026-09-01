@@ -43,7 +43,6 @@ async function fetchCollection<T>(contentType: string): Promise<ContentfulCollec
   return res.json();
 }
 
-/** Raw payload, shaped exactly like the old `/api/prices` response. */
 export async function getPricesPayload(): Promise<PricesPayload> {
   const [services, priceInfo] = await Promise.all([
     fetchCollection<ServiceFields>("service"),

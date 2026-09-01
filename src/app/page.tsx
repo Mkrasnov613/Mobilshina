@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import type { Metadata } from "next";
+import Image from "next/image";
 import AppLink from "@/components/AppLink";
 import CtaBand from "@/components/CtaBand";
 import IconBadge from "@/components/IconBadge";
@@ -35,7 +36,6 @@ export const metadata: Metadata = {
 const STATS = [
   { value: "15+", label: "років на дорогах Одеси" },
   { value: "24/7", label: "без вихідних і свят" },
-  { value: "20–40", label: "хвилин до вас по місту" },
   { value: "4.9", label: "середня оцінка клієнтів" },
 ];
 
@@ -71,19 +71,64 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <Box sx={{ bgcolor: "primary.main", color: "#fff", position: "relative", overflow: "hidden" }}>
-        {/* decorative glow */}
+      <Box
+        sx={{
+          bgcolor: "primary.main",
+          color: "#fff",
+          position: "relative",
+          overflow: "hidden",
+          minHeight: { md: 600 },
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        {/* car image bleeding off the right edge */}
         <Box
           aria-hidden
           sx={{
             position: "absolute",
-            right: { xs: -180, md: -120 },
-            top: -200,
-            width: 640,
-            height: 640,
+            display: { xs: "none", md: "block" },
+            right: { md: "-3%", lg: "0%" },
+            bottom: 0,
+            width: { md: "58%", lg: "54%" },
+            height: { md: "88%" },
+            pointerEvents: "none",
+          }}
+        >
+          <Image
+            src="/img/carimg.png"
+            alt=""
+            fill
+            priority
+            sizes="55vw"
+            style={{ objectFit: "contain", objectPosition: "right bottom" }}
+          />
+        </Box>
+        {/* brand scrim: solid on the left, feathers over the image */}
+        <Box
+          aria-hidden
+          sx={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background: {
+              xs: "none",
+              md: "linear-gradient(90deg, #141BB8 0%, #141BB8 34%, rgba(20,27,184,0.72) 55%, rgba(20,27,184,0.25) 78%, rgba(20,27,184,0) 100%)",
+            },
+          }}
+        />
+        {/* top-right glow for depth */}
+        <Box
+          aria-hidden
+          sx={{
+            position: "absolute",
+            right: -160,
+            top: -220,
+            width: 620,
+            height: 620,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.14), rgba(255,255,255,0) 70%)",
+              "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.12), rgba(255,255,255,0) 70%)",
             pointerEvents: "none",
           }}
         />
@@ -113,7 +158,9 @@ export default function HomePage() {
                 variant="contained"
                 size="large"
                 sx={{ bgcolor: "#fff", color: "primary.main", "&:hover": { bgcolor: "#f1f1f7" } }}
-              />
+              >
+                Подзвонити
+              </PhoneButton>
             </Box>
             <Box
               sx={{

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "Мобільний шиномонтаж в Одесі. Виїзд до клієнта за 30 хвилин. Якісно, швидко та зручно. Працюємо цілодобово!",
   authors: [{ name: "ФОП Краснов Сергій Ігорович" }],
   robots: { index: true, follow: true },
-  icons: { icon: "/img/favicon.svg" },
+  icons: { icon: "/favicon.svg" },
   openGraph: {
     type: "website",
     locale: "uk_UA",

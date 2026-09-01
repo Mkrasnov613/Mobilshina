@@ -117,7 +117,7 @@ export default function ClientsPage() {
                     p: 2,
                     backgroundColor: "#DDE1EA",
                     backgroundImage:
-                      "linear-gradient(rgba(20,27,184,0.10), rgba(20,27,184,0.10)), url('/img/location-mobilshina.png')",
+                      "linear-gradient(rgba(20,27,184,0.10), rgba(20,27,184,0.10)), url('/images/backgrounds/location-mobilshina.png')",
                     backgroundRepeat: "no-repeat, no-repeat",
                     backgroundPosition: "center, center",
                     backgroundSize: "cover, 56px",

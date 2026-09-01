@@ -29,7 +29,7 @@ function isActive(pathname: string, href: string): boolean {
 const Logo = ({ width = 150 }: { width?: number }) => (
   <Box component={Link} href="/" sx={{ display: "flex", flexShrink: 0 }} aria-label="Мобілшина, головна">
     <Image
-      src="/img/logo-mobilshina.png"
+      src="/images/brand/logo-mobilshina.png"
       alt="Мобілшина"
       width={width}
       height={Math.round(width * 0.32)}

@@ -40,7 +40,7 @@ export default function Footer() {
         >
           <Stack spacing={2}>
             <Image
-              src="/img/logo-mobilshina.png"
+              src="/images/brand/logo-mobilshina.png"
               alt="Мобілшина"
               width={160}
               height={51}

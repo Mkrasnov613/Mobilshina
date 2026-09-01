@@ -145,7 +145,7 @@ export default function CompanyPage() {
         sx={{
           color: "#fff",
           backgroundImage:
-            "linear-gradient(rgba(10,10,26,0.84), rgba(10,10,26,0.84)), url('/img/sponsor.png')",
+            "linear-gradient(rgba(10,10,26,0.84), rgba(10,10,26,0.84)), url('/images/backgrounds/sponsor.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

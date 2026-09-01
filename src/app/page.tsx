@@ -96,7 +96,7 @@ export default function HomePage() {
           }}
         >
           <Image
-            src="/img/carimg.png"
+            src="/images/hero/car.png"
             alt=""
             fill
             priority

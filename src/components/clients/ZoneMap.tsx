@@ -6,28 +6,47 @@ import Typography from "@mui/material/Typography";
 
 const ZONE_CHIPS = ["Одеса, центр", "Котовського", "Таїрова", "Совіньйон", "Фонтанка", "Передмістя"];
 
+/** Google Business Profile location — вулиця Шота Руставелі, Одеса. */
+const MAP_LAT = 46.4527848;
+const MAP_LON = 30.7151341;
+const bbox = [MAP_LON - 0.006, MAP_LAT - 0.004, MAP_LON + 0.006, MAP_LAT + 0.004]
+  .map((n) => n.toFixed(6))
+  .join("%2C");
+const MAP_EMBED_SRC = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${MAP_LAT}%2C${MAP_LON}`;
+const MAP_LINK = `https://www.openstreetmap.org/?mlat=${MAP_LAT}&mlon=${MAP_LON}#map=15/${MAP_LAT}/${MAP_LON}`;
+
 export default function ZoneMap() {
   return (
     <Paper elevation={1} sx={{ overflow: "hidden" }}>
-      <Box
-        sx={{
-          height: 280,
-          display: "flex",
-          alignItems: "flex-end",
-          p: 2,
-          backgroundColor: "#DDE1EA",
-          backgroundImage:
-            "linear-gradient(rgba(20,27,184,0.10), rgba(20,27,184,0.10)), url('/images/backgrounds/location-mobilshina.png')",
-          backgroundRepeat: "no-repeat, no-repeat",
-          backgroundPosition: "center, center",
-          backgroundSize: "cover, 56px",
-        }}
-      >
+      <Box sx={{ position: "relative", height: 280 }}>
+        <Box
+          component="iframe"
+          src={MAP_EMBED_SRC}
+          title="Мапа: вулиця Шота Руставелі, Одеса"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          sx={{ width: "100%", height: "100%", border: 0, display: "block" }}
+        />
         <Typography
           variant="caption"
-          sx={{ bgcolor: "rgba(255,255,255,0.9)", px: 1.25, py: 0.75, borderRadius: 1, color: "text.secondary" }}
+          component="a"
+          href={MAP_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            position: "absolute",
+            left: 12,
+            bottom: 12,
+            bgcolor: "rgba(255,255,255,0.9)",
+            px: 1.25,
+            py: 0.75,
+            borderRadius: 1,
+            color: "text.secondary",
+            textDecoration: "none",
+            "&:hover": { textDecoration: "underline" },
+          }}
         >
-          Тут буде інтерактивна мапа зони виїзду
+          Відкрити мапу
         </Typography>
       </Box>
       <Stack spacing={1.5} sx={{ p: 3 }}>

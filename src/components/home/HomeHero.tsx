@@ -27,7 +27,6 @@ export default function HomeHero() {
         alignItems: "center",
       }}
     >
-      {/* car image bleeding off the right edge */}
       <Box
         aria-hidden
         sx={{

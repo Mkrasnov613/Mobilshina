@@ -27,7 +27,6 @@ export default function HomePage() {
       <CtaBand
         title="Колесо не чекає — і ми теж"
         text="Диспетчер на лінії просто зараз. Один дзвінок — і майстер виїжджає."
-        withViber
         callLabel="Подзвонити"
       />
     </>

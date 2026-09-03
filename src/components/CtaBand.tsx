@@ -14,8 +14,6 @@ interface CtaBandProps {
   title: string;
   text?: string;
   tone?: "blue" | "ink";
-  /** show the secondary "Написати" (Viber) button */
-  withViber?: boolean;
   /** button label; defaults to the phone number */
   callLabel?: string;
 }
@@ -24,7 +22,6 @@ export default function CtaBand({
   title,
   text,
   tone = "blue",
-  withViber = false,
   callLabel = PHONE_DISPLAY,
 }: CtaBandProps) {
   return (
@@ -59,18 +56,7 @@ export default function CtaBand({
             >
               {callLabel}
             </Button>
-            {withViber && (
-              <Button
-                variant="outlined"
-                size="large"
-                startIcon={<ChatIcon />}
-                component="a"
-                href={VIBER_HREF}
-                sx={{ color: "#fff", borderColor: "rgba(255,255,255,0.5)", "&:hover": { borderColor: "#fff", bgcolor: "rgba(255,255,255,0.08)" } }}
-              >
-                Написати
-              </Button>
-            )}
+
           </Stack>
         </Stack>
       </Container>

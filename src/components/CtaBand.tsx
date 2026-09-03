@@ -1,7 +1,6 @@
 "use client";
 
 import CallIcon from "@mui/icons-material/Call";
-import ChatIcon from "@mui/icons-material/ChatBubbleOutline";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";

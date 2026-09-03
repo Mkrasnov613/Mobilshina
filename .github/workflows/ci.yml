@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main, v2.0]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build

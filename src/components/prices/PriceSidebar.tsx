@@ -24,7 +24,7 @@ export default function PriceSidebar() {
             Скажіть район, тип авто і що сталося — назвемо точну суму одразу.
           </Typography>
           <PhoneButton variant="contained" size="large" fullWidth />
-          <Button
+          {/* <Button
             variant="outlined"
             fullWidth
             startIcon={<CalculateIcon />}
@@ -32,16 +32,19 @@ export default function PriceSidebar() {
             href="/#calculator"
           >
             Калькулятор
-          </Button>
+          </Button> */}
         </Stack>
       </Paper>
 
       <Paper elevation={0} sx={{ bgcolor: "#E8EAF6", p: 2.5 }}>
         <Stack direction="row" spacing={1.5}>
           <InfoIcon color="primary" sx={{ mt: 0.25 }} />
-          <Typography variant="body2" sx={{ color: "rgba(0,0,0,0.7)", lineHeight: 1.55 }}>
-            Нічний виїзд (22:00–07:00) та адреси за межами міста тарифікуються окремо. Без
-            сюрпризів на місці.
+          <Typography
+            variant="body2"
+            sx={{ color: "rgba(0,0,0,0.7)", lineHeight: 1.55 }}
+          >
+            Нічний виїзд (22:00–07:00) та адреси за межами міста тарифікуються
+            окремо. Без сюрпризів на місці.
           </Typography>
         </Stack>
       </Paper>
@@ -49,9 +52,12 @@ export default function PriceSidebar() {
       <Paper elevation={0} sx={{ bgcolor: "#E8F5E9", p: 2.5 }}>
         <Stack direction="row" spacing={1.5}>
           <PaymentsIcon sx={{ color: "#2E7D32", mt: 0.25 }} />
-          <Typography variant="body2" sx={{ color: "rgba(0,0,0,0.7)", lineHeight: 1.55 }}>
-            Оплата на місці: готівка або картка. Для автопарків — безготівковий розрахунок і
-            документи.
+          <Typography
+            variant="body2"
+            sx={{ color: "rgba(0,0,0,0.7)", lineHeight: 1.55 }}
+          >
+            Оплата на місці: готівка або картка. Для автопарків — безготівковий
+            розрахунок і документи.
           </Typography>
         </Stack>
       </Paper>

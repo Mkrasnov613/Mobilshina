@@ -25,17 +25,28 @@ const heading = {
   mb: 1.5,
 } as const;
 
-const linkSx = { color: "rgba(255,255,255,0.8)", fontSize: 14, "&:hover": { color: "#fff" } } as const;
+const linkSx = {
+  color: "rgba(255,255,255,0.8)",
+  fontSize: 14,
+  "&:hover": { color: "#fff" },
+} as const;
 
 export default function Footer() {
   return (
-    <Box component="footer" sx={{ bgcolor: "#14141C", color: "#fff", pt: 7, pb: 3 }}>
+    <Box
+      component="footer"
+      sx={{ bgcolor: "#14141C", color: "#fff", pt: 7, pb: 3 }}
+    >
       <Container>
         <Box
           sx={{
             display: "grid",
             gap: { xs: 4, md: 6 },
-            gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "2fr 1fr 1fr 1.4fr" },
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr",
+              md: "2fr 1fr 1fr 1.4fr",
+            },
           }}
         >
           <Stack spacing={2}>
@@ -44,18 +55,34 @@ export default function Footer() {
               alt="Мобілшина"
               width={160}
               height={51}
-              style={{ width: 160, height: "auto", filter: "brightness(0) invert(1)" }}
+              style={{
+                width: 160,
+                height: "auto",
+                filter: "brightness(0) invert(1)",
+              }}
             />
-            <Typography sx={{ fontSize: 14, color: "rgba(255,255,255,0.6)", maxWidth: 320 }}>
-              Мобільний шиномонтаж в Одесі та передмісті з 2010 року. Виїзд цілодобово.
+            <Typography
+              sx={{
+                fontSize: 14,
+                color: "rgba(255,255,255,0.6)",
+                maxWidth: 320,
+              }}
+            >
+              Мобільний шиномонтаж в Одесі та передмісті з 2010 року. Виїзд
+              цілодобово.
             </Typography>
           </Stack>
 
-          <Box>
+          <Box display={{ md: "none", lg: "block" }}>
             <Typography sx={heading}>Сторінки</Typography>
             <Stack spacing={1.25}>
               {NAV_ITEMS.map((item) => (
-                <AppLink key={item.href} href={item.href} underline="none" sx={linkSx}>
+                <AppLink
+                  key={item.href}
+                  href={item.href}
+                  underline="none"
+                  sx={linkSx}
+                >
                   {item.label}
                 </AppLink>
               ))}
@@ -66,7 +93,10 @@ export default function Footer() {
             <Typography sx={heading}>Зона виїзду</Typography>
             <Stack spacing={1.25}>
               {ZONES.map((zone) => (
-                <Typography key={zone} sx={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>
+                <Typography
+                  key={zone}
+                  sx={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}
+                >
                   {zone}
                 </Typography>
               ))}
@@ -76,13 +106,26 @@ export default function Footer() {
           <Box>
             <Typography sx={heading}>Контакти</Typography>
             <Stack spacing={1.25} alignItems="flex-start">
-              <Link href={PHONE_HREF} underline="none" sx={{ fontSize: 22, fontWeight: 500, color: "#fff" }}>
+              <Link
+                href={PHONE_HREF}
+                underline="none"
+                sx={{ fontSize: 22, fontWeight: 500, color: "#fff" }}
+              >
                 {PHONE_DISPLAY}
               </Link>
-              <Link href={`mailto:${EMAIL}`} underline="hover" sx={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}>
+              <Link
+                href={`mailto:${EMAIL}`}
+                underline="hover"
+                sx={{ fontSize: 14, color: "rgba(255,255,255,0.8)" }}
+              >
                 {EMAIL}
               </Link>
-              <Stack direction="row" spacing={0.75} alignItems="center" sx={{ color: "#81C784", fontSize: 14 }}>
+              <Stack
+                direction="row"
+                spacing={0.75}
+                alignItems="center"
+                sx={{ color: "#81C784", fontSize: 14 }}
+              >
                 <ScheduleIcon sx={{ fontSize: 18 }} />
                 {SCHEDULE_SHORT}
               </Stack>
@@ -90,7 +133,9 @@ export default function Footer() {
           </Box>
         </Box>
 
-        <Divider sx={{ borderColor: "rgba(255,255,255,0.12)", mt: 4, mb: 2.5 }} />
+        <Divider
+          sx={{ borderColor: "rgba(255,255,255,0.12)", mt: 4, mb: 2.5 }}
+        />
         <Stack
           direction={{ xs: "column", sm: "row" }}
           justifyContent="space-between"

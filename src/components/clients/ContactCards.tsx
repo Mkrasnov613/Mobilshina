@@ -9,14 +9,20 @@ import { EMAIL, PHONE_DISPLAY, PHONE_HREF, SCHEDULE_LONG } from "@/lib/nav";
 
 export default function ContactCards() {
   return (
-    <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" }, gap: 3 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
       <Box component="a" href={PHONE_HREF} sx={{ textDecoration: "none" }}>
         <ContactCard icon={<CallIcon />} label="Телефон · 24/7" tone="blue">
-          <Typography sx={{ fontSize: 22, fontWeight: 500, color: "#fff" }}>{PHONE_DISPLAY}</Typography>
+          <Typography sx={{ fontSize: 22, fontWeight: 500, color: "#fff" }}>
+            {PHONE_DISPLAY}
+          </Typography>
         </ContactCard>
       </Box>
       <ContactCard icon={<MailIcon />} label="E-mail">
-        <Link href={`mailto:${EMAIL}`} underline="hover" sx={{ fontWeight: 500 }}>
+        <Link
+          href={`mailto:${EMAIL}`}
+          underline="hover"
+          sx={{ fontWeight: 500 }}
+        >
           {EMAIL}
         </Link>
       </ContactCard>

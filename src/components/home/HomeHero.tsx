@@ -11,7 +11,7 @@ import PhoneButton from "@/components/PhoneButton";
 const STATS = [
   { value: "15+", label: "років на дорогах Одеси" },
   { value: "24/7", label: "без вихідних і свят" },
-  { value: "4.9", label: "середня оцінка клієнтів" },
+  { value: "5.0", label: "середня оцінка клієнтів" },
 ];
 
 export default function HomeHero() {

@@ -7,7 +7,6 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { reportConversion } from "@/lib/gtag";
-import { PHONE_DISPLAY, PHONE_HREF, VIBER_HREF } from "@/lib/nav";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/nav";
 interface CtaBandProps {
   title: string;

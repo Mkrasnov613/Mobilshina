@@ -2,7 +2,6 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Section from "@/components/Section";
-import StarRateIcon from "@mui/icons-material/StarRate";
 import type { ResolvedRates } from "@/constants/calculatorRates";
 
 const STEPS = [

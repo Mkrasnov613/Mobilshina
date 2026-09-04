@@ -15,7 +15,7 @@ import {
   PHONE_HREF,
   SCHEDULE_SHORT,
   ZONES,
-} from "@/lib/nav";
+} from "@/utils/nav";
 
 const heading = {
   fontSize: 12,

@@ -7,7 +7,7 @@ import AppLink from "@/components/AppLink";
 import IconBadge from "@/components/IconBadge";
 import Section from "@/components/Section";
 import ServiceIcon from "@/components/ServiceIcon";
-import { SERVICES } from "@/lib/services";
+import { SERVICES } from "@/utils/services";
 
 export default function ServicesPreview() {
   return (

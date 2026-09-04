@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import CtaBand from "@/components/CtaBand";
 import PageHero from "@/components/PageHero";
 import ServicesGrid from "@/components/ServicesGrid";
+import CalculatorCard from "@/components/CalculatorCard";
+import { resolveRates } from "@/constants/calculatorRates";
+import { getPricesView } from "@/utils/contentful";
 
 export const metadata: Metadata = {
   title: "Послуги – Мобільний Шиномонтаж Одеса | Мобілшина",
   description:
-    "Послуги мобільного шиномонтажу в Одесі: заміна та ремонт коліс, балансування, ремонт дисків до 22\", запуск двигуна, підвіз палива, обслуговування автопарків. Виїзд до клієнта.",
+    'Послуги мобільного шиномонтажу в Одесі: заміна та ремонт коліс, балансування, ремонт дисків до 22", запуск двигуна, підвіз палива, обслуговування автопарків. Виїзд до клієнта.',
   keywords: [
     "мобільний шиномонтаж Одеса",
     "послуги шиномонтажу",
@@ -19,7 +22,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/service" },
 };
 
-export default function ServicePage() {
+
+
+export default async function ServicePage() {
   return (
     <>
       <PageHero

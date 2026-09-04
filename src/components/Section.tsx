@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import type { SxProps, Theme } from "@mui/material/styles";
 import type { ReactNode } from "react";
 
 type Tone = "white" | "grey" | "blue" | "ink";
@@ -22,6 +23,7 @@ interface SectionProps {
   /** vertical padding preset */
   dense?: boolean;
   id?: string;
+  sx?: SxProps<Theme>;
 }
 
 /** Standard page section: tone background, optional overline + h2 header with a right-aligned action. */
@@ -33,10 +35,18 @@ export default function Section({
   children,
   dense = false,
   id,
+  sx,
 }: SectionProps) {
   const onDark = tone === "blue" || tone === "ink";
   return (
-    <Box id={id} component="section" sx={{ ...TONE_SX[tone], py: dense ? { xs: 5, md: 6 } : { xs: 6, md: 8 } }}>
+    <Box
+      id={id}
+      component="section"
+      sx={[
+        { ...TONE_SX[tone], py: dense ? { xs: 5, md: 6 } : { xs: 6, md: 8 } },
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
+    >
       <Container>
         {(overline || title || action) && (
           <Stack

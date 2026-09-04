@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { GA_ADS_ID } from "@/lib/gtag";
+import { GA_ADS_ID } from "@/utils/gtag";
 
 /** Google Ads global site tag (gtag.js). Ported from the old inline <head> snippet. */
 export default function GoogleTag() {

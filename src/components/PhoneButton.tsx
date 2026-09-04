@@ -4,8 +4,8 @@ import CallIcon from "@mui/icons-material/Call";
 import Button from "@mui/material/Button";
 import type { SxProps, Theme } from "@mui/material/styles";
 import type { ReactNode } from "react";
-import { reportConversion } from "@/lib/gtag";
-import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/nav";
+import { reportConversion } from "@/utils/gtag";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/utils/nav";
 
 interface PhoneButtonProps {
   children?: ReactNode;

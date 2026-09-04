@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { sendMail } from "@/lib/mailer";
-import { pruneRateLimit, rateLimit } from "@/lib/rateLimit";
+import { sendMail } from "@/utils/mailer";
+import { pruneRateLimit, rateLimit } from "@/utils/rateLimit";
 
 export const runtime = "nodejs";
 

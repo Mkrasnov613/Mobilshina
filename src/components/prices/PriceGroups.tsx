@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import type { ReactNode } from "react";
-import type { PricesView } from "@/lib/contentful";
+import type { PricesView } from "@/utils/contentful";
 
 const GROUPS: { title: string; icon: ReactNode; priceIds: string[] }[] = [
   {
@@ -67,7 +67,7 @@ export default function PriceGroups({ byId, hasView }: PriceGroupsProps) {
       {GROUPS.map((group, index) => {
         const rows = group.priceIds
           .map((id) => byId[id])
-          .filter((row): row is { label: string; price: string } => Boolean(row && (row.label || row.price)));
+          .filter((row): row is PricesView["byId"][string] => Boolean(row && (row.label || row.price)));
         return (
           <Accordion key={group.title} defaultExpanded={index === 0} disableGutters elevation={1}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>

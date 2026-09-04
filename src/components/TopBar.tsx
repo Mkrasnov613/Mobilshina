@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
-import { COVERAGE, EMAIL, SCHEDULE_LONG } from "@/lib/nav";
+import { COVERAGE, EMAIL, SCHEDULE_LONG } from "@/utils/nav";
 
 const itemSx = { display: "flex", alignItems: "center", gap: 0.75 } as const;
 

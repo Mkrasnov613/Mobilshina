@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import ThemeRegistry from "@/components/ThemeRegistry";
 import TopBar from "@/components/TopBar";
-import { SITE_URL } from "@/lib/nav";
+import { SITE_URL } from "@/utils/nav";
 
 const roboto = Roboto({
   variable: "--font-roboto",

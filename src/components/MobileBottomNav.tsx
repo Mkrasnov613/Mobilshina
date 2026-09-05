@@ -12,8 +12,8 @@ import Fab from "@mui/material/Fab";
 import Paper from "@mui/material/Paper";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { reportConversion } from "@/lib/gtag";
-import { PHONE_HREF } from "@/lib/nav";
+import { reportConversion } from "@/utils/gtag";
+import { PHONE_HREF } from "@/utils/nav";
 
 const ITEMS = [
   { href: "/", label: "Головна", icon: <HomeIcon /> },

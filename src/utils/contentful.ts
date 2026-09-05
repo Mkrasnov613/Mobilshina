@@ -17,6 +17,8 @@ interface ContentfulCollection<T> {
 export interface ServiceFields {
   priceId: string;
   price: string;
+  /** Numeric price used by the calculator (the `price` string stays for display). */
+  amount?: number;
   groupTitle: string;
 }
 
@@ -52,8 +54,8 @@ export async function getPricesPayload(): Promise<PricesPayload> {
 }
 
 export interface PricesView {
-  /** Map of priceId -> { label, price }. */
-  byId: Record<string, { label: string; price: string }>;
+  /** Map of priceId -> { label, price (display string), amount (number or null) }. */
+  byId: Record<string, { label: string; price: string; amount: number | null }>;
   lastUpdate: string | null;
 }
 
@@ -67,6 +69,7 @@ export async function getPricesView(): Promise<PricesView> {
     byId[fields.priceId] = {
       label: fields.groupTitle ?? "",
       price: fields.price ?? "",
+      amount: typeof fields.amount === "number" ? fields.amount : null,
     };
   }
 

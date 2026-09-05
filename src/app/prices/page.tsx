@@ -6,7 +6,9 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import PriceGroups from "@/components/prices/PriceGroups";
 import PriceSidebar from "@/components/prices/PriceSidebar";
-import { getPricesView } from "@/lib/contentful";
+import { getPricesView } from "@/utils/contentful";
+import { resolveRates } from "@/constants/calculatorRates";
+import CalculatorCard from "@/components/CalculatorCard";
 
 export const metadata: Metadata = {
   title: "Ціни – Мобільний Шиномонтаж Одеса | Мобілшина",
@@ -22,7 +24,18 @@ export const metadata: Metadata = {
   alternates: { canonical: "/prices" },
 };
 
+async function getRates() {
+  try {
+    const { byId } = await getPricesView();
+    return resolveRates(byId);
+  } catch {
+    return resolveRates();
+  }
+}
+
 export default async function PricesPage() {
+  const rates = await getRates();
+
   let view: Awaited<ReturnType<typeof getPricesView>> | null = null;
   try {
     view = await getPricesView();
@@ -30,7 +43,9 @@ export default async function PricesPage() {
     view = null;
   }
   const byId = view?.byId ?? {};
-  const updated = view?.lastUpdate ? new Date(view.lastUpdate).toLocaleDateString("uk-UA") : null;
+  const updated = view?.lastUpdate
+    ? new Date(view.lastUpdate).toLocaleDateString("uk-UA")
+    : null;
 
   return (
     <>
@@ -43,24 +58,28 @@ export default async function PricesPage() {
             <Chip
               icon={<UpdateIcon />}
               label={`Оновлено ${updated}`}
-              sx={{ bgcolor: "rgba(255,255,255,0.16)", color: "#fff", "& .MuiChip-icon": { color: "#fff" } }}
+              sx={{
+                bgcolor: "rgba(255,255,255,0.16)",
+                color: "#fff",
+                "& .MuiChip-icon": { color: "#fff" },
+              }}
             />
           ) : undefined
         }
       />
 
       <Box sx={{ bgcolor: "#F5F5F7", py: { xs: 4, md: 8 } }}>
-        <Container>
+        <Container maxWidth='xl'>
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1fr 340px" },
+              gridTemplateColumns: { lg: "1fr 400px" },
               gap: { xs: 3, md: 4 },
               alignItems: "start",
             }}
           >
             <PriceGroups byId={byId} hasView={Boolean(view)} />
-            <PriceSidebar />
+            <CalculatorCard rates={rates} />
           </Box>
         </Container>
       </Box>

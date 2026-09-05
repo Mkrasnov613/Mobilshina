@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Section from "@/components/Section";
+import type { ResolvedRates } from "@/constants/calculatorRates";
 
 const STEPS = [
   {
@@ -25,59 +26,70 @@ const STEPS = [
 export default function HowItWorks() {
   return (
     <Section
+      id="calculator"
       tone="white"
       overline="Як це працює"
       title="Чотири кроки від дзвінка до дороги"
+      sx={{ scrollMarginTop: { xs: 56, md: 64 } }}
     >
-      <Stack spacing={0} sx={{ maxWidth: 720 }}>
-        {STEPS.map((step, index) => (
-          <Stack
-            key={step.title}
-            direction="row"
-            spacing={2.5}
-            sx={{
-              pb: index < STEPS.length - 1 ? 3 : 0,
-              position: "relative",
-            }}
-          >
-            <Box
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", md: "1fr 460px" },
+          gap: { xs: 4, md: 6 },
+          alignItems: "start",
+        }}
+      >
+        <Stack spacing={0} sx={{ maxWidth: 720 }}>
+          {STEPS.map((step, index) => (
+            <Stack
+              key={step.title}
+              direction="row"
+              spacing={2.5}
               sx={{
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                bgcolor: "primary.main",
-                color: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 500,
-                flexShrink: 0,
-                zIndex: 1,
+                pb: index < STEPS.length - 1 ? 3 : 0,
+                position: "relative",
               }}
             >
-              {index + 1}
-            </Box>
-            {index < STEPS.length - 1 && (
               <Box
                 sx={{
-                  position: "absolute",
-                  left: 19,
-                  top: 40,
-                  bottom: 0,
-                  width: "2px",
-                  bgcolor: "divider",
+                  width: 40,
+                  height: 40,
+                  borderRadius: "50%",
+                  bgcolor: "primary.main",
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: 500,
+                  flexShrink: 0,
+                  zIndex: 1,
                 }}
-              />
-            )}
-            <Box sx={{ pt: 0.5 }}>
-              <Typography sx={{ fontWeight: 500 }}>{step.title}</Typography>
-              <Typography variant="body2" color="text.secondary">
-                {step.text}
-              </Typography>
-            </Box>
-          </Stack>
-        ))}
-      </Stack>
+              >
+                {index + 1}
+              </Box>
+              {index < STEPS.length - 1 && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 19,
+                    top: 40,
+                    bottom: 0,
+                    width: "2px",
+                    bgcolor: "divider",
+                  }}
+                />
+              )}
+              <Box sx={{ pt: 0.5 }}>
+                <Typography sx={{ fontWeight: 500 }}>{step.title}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {step.text}
+                </Typography>
+              </Box>
+            </Stack>
+          ))}
+        </Stack>
+      </Box>
     </Section>
   );
 }

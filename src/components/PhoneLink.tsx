@@ -3,8 +3,8 @@
 import Link from "@mui/material/Link";
 import type { LinkProps } from "@mui/material/Link";
 import type { ReactNode } from "react";
-import { reportConversion } from "@/lib/gtag";
-import { PHONE_HREF } from "@/lib/nav";
+import { reportConversion } from "@/utils/gtag";
+import { PHONE_HREF } from "@/utils/nav";
 
 interface PhoneLinkProps extends Omit<LinkProps, "href" | "onClick"> {
   href?: string;

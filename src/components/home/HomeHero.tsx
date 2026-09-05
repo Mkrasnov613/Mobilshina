@@ -7,11 +7,27 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import PhoneButton from "@/components/PhoneButton";
+import AppLink from "../AppLink";
 
-const STATS = [
+const GOOGLE_BUSINESS_URL =
+  "https://www.google.com/search?q=%D0%9C%D0%BE%D0%B1%D1%96%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9+%D1%88%D0%B8%D0%BD%D0%BE%D0%BC%D0%BE%D0%BD%D1%82%D0%B0%D0%B6+%D0%9E%D0%B4%D0%B5%D1%81%D0%B0";
+
+type Stat = {
+  value: string;
+  label: string;
+  type?: "link";
+  href?: string;
+};
+
+const STATS: Stat[] = [
   { value: "15+", label: "років на дорогах Одеси" },
   { value: "24/7", label: "без вихідних і свят" },
-  { value: "5.0", label: "середня оцінка клієнтів" },
+  {
+    value: "5.0",
+    label: "середня оцінка клієнтів",
+    type: "link",
+    href: GOOGLE_BUSINESS_URL,
+  },
 ];
 
 export default function HomeHero() {
@@ -108,8 +124,8 @@ export default function HomeHero() {
             }}
           >
             Пробили колесо на трасі, сів акумулятор чи час перевзуватись —
-            виїжджаємо цілодобово по Одесі та передмістю. Вартість називаємо
-            по телефону, до виїзду.
+            виїжджаємо цілодобово по Одесі та передмістю. Вартість називаємо по
+            телефону, до виїзду.
           </Typography>
           <Box>
             <PhoneButton
@@ -135,22 +151,46 @@ export default function HomeHero() {
               maxWidth: 720,
             }}
           >
-            {STATS.map((stat) => (
-              <Box key={stat.label}>
-                <Typography sx={{ fontSize: 34, fontWeight: 400 }}>
-                  {stat.value}
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: 13,
-                    color: "rgba(255,255,255,0.7)",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {stat.label}
-                </Typography>
-              </Box>
-            ))}
+            {STATS.map((stat) => {
+              const value =
+                stat.type === "link" ? (
+                  <AppLink
+                    href={stat.href ?? "/reviews"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      color: "inherit",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 0.5,
+                      "&:hover": { textDecoration: "underline" },
+                    }}
+                  >
+                    {stat.value}
+                  </AppLink>
+                ) : (
+                  stat.value
+                );
+
+              return (
+                <Box key={stat.label}>
+                  <Typography sx={{ fontSize: 34, fontWeight: 400 }}>
+                    {value}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      fontSize: 13,
+                      color: "rgba(255,255,255,0.7)",
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {stat.label}
+                  </Typography>
+                </Box>
+              );
+            })}
           </Box>
         </Stack>
       </Container>

@@ -19,8 +19,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { reportConversion } from "@/lib/gtag";
-import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/nav";
+import { reportConversion } from "@/utils/gtag";
+import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/utils/nav";
 
 function isActive(pathname: string, href: string): boolean {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);

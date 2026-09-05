@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { reportConversion } from "@/lib/gtag";
-import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/nav";
+import { reportConversion } from "@/utils/gtag";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/utils/nav";
 interface CtaBandProps {
   title: string;
   text?: string;

@@ -18,12 +18,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+
   return (
     <>
       <HomeHero />
       <ServicesPreview />
-      <HowItWorks />
+      <HowItWorks  />
       <CtaBand
         title="Колесо не чекає — і ми теж"
         text="Диспетчер на лінії просто зараз. Один дзвінок — і майстер виїжджає."

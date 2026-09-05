@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { NAV_ITEMS, SITE_URL } from "@/lib/nav";
+import { NAV_ITEMS, SITE_URL } from "@/utils/nav";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

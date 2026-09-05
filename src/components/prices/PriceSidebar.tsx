@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import AppLink from "@/components/AppLink";
 import PhoneButton from "@/components/PhoneButton";
 
 export default function PriceSidebar() {
@@ -24,15 +23,9 @@ export default function PriceSidebar() {
             Скажіть район, тип авто і що сталося — назвемо точну суму одразу.
           </Typography>
           <PhoneButton variant="contained" size="large" fullWidth />
-          {/* <Button
-            variant="outlined"
-            fullWidth
-            startIcon={<CalculateIcon />}
-            component={AppLink}
-            href="/#calculator"
-          >
+          <Button variant="outlined" fullWidth startIcon={<CalculateIcon />} href="#calculator">
             Калькулятор
-          </Button> */}
+          </Button>
         </Stack>
       </Paper>
 

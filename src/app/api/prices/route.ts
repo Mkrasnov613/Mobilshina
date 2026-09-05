@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getPricesPayload } from "@/lib/contentful";
+import { getPricesPayload } from "@/utils/contentful";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

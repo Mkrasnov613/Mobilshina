@@ -13,9 +13,9 @@ import { useState } from "react";
 import AppLink from "@/components/AppLink";
 import IconBadge from "@/components/IconBadge";
 import ServiceIcon from "@/components/ServiceIcon";
-import { reportConversion } from "@/lib/gtag";
-import { PHONE_HREF } from "@/lib/nav";
-import { SERVICES, SERVICE_FILTERS, type ServiceCategory } from "@/lib/services";
+import { reportConversion } from "@/utils/gtag";
+import { PHONE_HREF } from "@/utils/nav";
+import { SERVICES, SERVICE_FILTERS, type ServiceCategory } from "@/utils/services";
 
 export default function ServicesGrid() {
   const [filter, setFilter] = useState<ServiceCategory | "all">("all");

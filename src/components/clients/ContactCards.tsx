@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import ContactCard from "@/components/clients/ContactCard";
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF, SCHEDULE_LONG } from "@/lib/nav";
+import { EMAIL, PHONE_DISPLAY, PHONE_HREF, SCHEDULE_LONG } from "@/utils/nav";
 
 export default function ContactCards() {
   return (

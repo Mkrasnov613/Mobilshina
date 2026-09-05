@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import CtaBand from "@/components/CtaBand";
 import PageHero from "@/components/PageHero";
 import ServicesGrid from "@/components/ServicesGrid";
-import CalculatorCard from "@/components/CalculatorCard";
 import { resolveRates } from "@/constants/calculatorRates";
 
 export const metadata: Metadata = {

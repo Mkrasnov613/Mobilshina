@@ -4,7 +4,6 @@ import PageHero from "@/components/PageHero";
 import ServicesGrid from "@/components/ServicesGrid";
 import CalculatorCard from "@/components/CalculatorCard";
 import { resolveRates } from "@/constants/calculatorRates";
-import { getPricesView } from "@/utils/contentful";
 
 export const metadata: Metadata = {
   title: "Послуги – Мобільний Шиномонтаж Одеса | Мобілшина",

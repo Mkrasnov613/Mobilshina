@@ -1,5 +1,4 @@
 import BoltIcon from "@mui/icons-material/Bolt";
-import StarIcon from "@mui/icons-material/Star";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";

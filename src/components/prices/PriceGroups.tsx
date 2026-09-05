@@ -104,9 +104,6 @@ export default function PriceGroups({ byId, hasView }: PriceGroupsProps) {
           </Accordion>
         );
       })}
-      <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1.5 }}>
-        Назви рядків і суми підтягуються з Contentful (/api/prices).
-      </Typography>
     </Box>
   );
 }

@@ -1,6 +1,7 @@
 export type CarTypeKey = "car" | "suv" | "minibus";
 export type ServiceKey =
   | "minCall"
+  | "simpleRepair"
   | "cut"
   | "steelDisk"
   | "alloyDisk"
@@ -64,18 +65,36 @@ export const CAR_TYPES: CarTypeOption[] = [
 /** Real priceIds — the same ones `PriceGroups` reads for the /prices page. */
 export const CALC_SERVICES: ServiceOption[] = [
   {
+    // Flat call-out fee — same price regardless of car type.
     key: "minCall",
     label: "Мінімальний виїзд майстра",
     priceId: "price-min-call",
     fallback: 1500,
     mode: "standalone",
-    carTypeOverrides: {
-      // "Кросовер, джип, D > 19″" already has its own call-out price.
-      suv: { priceId: "price-suv", fallback: 2200 },
-    },
   },
-  { key: "cut", label: "Ремонт бокового порізу", priceId: "price-cut", fallback: 600, mode: "addon" },
-  { key: "steelDisk", label: "Прокатка сталевого диска", priceId: "price-steel", fallback: 600, mode: "addon" },
+  {
+    // price-min-call already covers a simple/uncomplicated repair — this option
+    // adds nothing on top, it's the call-out price on its own (per owner note).
+    key: "simpleRepair",
+    label: "Нескладний ремонт (виклик майстра)",
+    priceId: "price-simple-repair",
+    fallback: 0,
+    mode: "addon",
+  },
+  {
+    key: "cut",
+    label: "Ремонт бокового порізу",
+    priceId: "price-cut",
+    fallback: 600,
+    mode: "addon",
+  },
+  {
+    key: "steelDisk",
+    label: "Прокатка сталевого диска",
+    priceId: "price-steel",
+    fallback: 600,
+    mode: "addon",
+  },
   {
     key: "alloyDisk",
     label: "Ремонт легкосплавного диска",
@@ -102,7 +121,13 @@ export const CALC_SERVICES: ServiceOption[] = [
     fallback: 1500,
     mode: "standalone",
   },
-  { key: "fuel", label: "Підвіз палива", priceId: "price-fuel", fallback: 1500, mode: "standalone" },
+  {
+    key: "fuel",
+    label: "Підвіз палива",
+    priceId: "price-fuel",
+    fallback: 1500,
+    mode: "standalone",
+  },
 ];
 
 /**
@@ -112,6 +137,9 @@ export const CALC_SERVICES: ServiceOption[] = [
  */
 export const SEASONAL_SET_LARGE_WHEEL_PRICE_ID = "price-22inch";
 export const SEASONAL_SET_LARGE_WHEEL_FALLBACK = 2500;
+
+export const SEASONAL_SET_MEDIUM_WHEEL_PRICE_ID = "price-suv-change"; // same as the SUV/minibus override for 12″–18″
+export const SEASONAL_SET_MEDIUM_WHEEL_FALLBACK = 2200;
 
 /** "RanFlat, низький профіль" — flat Перевзуття add-on on top of whichever seasonal price applies. */
 export const SEASONAL_SET_RUN_FLAT_PRICE_ID = "price-rft";
@@ -133,8 +161,19 @@ export const CALC_ZONES: ZoneOption[] = [
     fallback: 1200,
     nightOverride: { priceId: "price-kotovsky-night", fallback: 1500 },
   },
-  { key: "sovinyon", label: "Совіньйон", priceId: "price-sovinyon", fallback: 1200 },
-  { key: "outCity", label: "Передмістя", priceId: "price-out-city", fallback: 90, perKm: true },
+  {
+    key: "sovinyon",
+    label: "Совіньйон",
+    priceId: "price-sovinyon",
+    fallback: 1200,
+  },
+  {
+    key: "outCity",
+    label: "Передмістя",
+    priceId: "price-out-city",
+    fallback: 90,
+    perKm: true,
+  },
 ];
 
 /** Flat call-out replacement after hours, for ordinary repair calls (not perevzuttya — see zone night prices for that). */
@@ -165,6 +204,7 @@ export interface ResolvedRates {
     nightFee?: number;
   }[];
   outCityPerKm: number;
+  suvChange: number;
   /** flat call-out price to use at night instead of мінімальний виїзд (repair visits only) */
   nightCallOut: number;
   /** flat 19″–22″ Перевзуття price — replaces the car-type-based seasonal price entirely */
@@ -179,32 +219,57 @@ export interface ResolvedRates {
  * from a Server Component to the client `<CalculatorCard>`.
  */
 export function resolveRates(byId: PriceMap = {}): ResolvedRates {
-  const amount = (priceId: string, fallback: number) => byId[priceId]?.amount ?? fallback;
+  const amount = (priceId: string, fallback: number) =>
+    byId[priceId]?.amount ?? fallback;
 
   return {
     carTypes: CAR_TYPES,
     services: CALC_SERVICES.map((s) => {
       const overrideEntries = s.carTypeOverrides
-        ? (Object.entries(s.carTypeOverrides) as [CarTypeKey, CarTypeOverride][])
+        ? (Object.entries(s.carTypeOverrides) as [
+            CarTypeKey,
+            CarTypeOverride,
+          ][])
         : [];
       const overrides = overrideEntries.length
         ? (Object.fromEntries(
-            overrideEntries.map(([carKey, o]) => [carKey, amount(o.priceId, o.fallback)]),
+            overrideEntries.map(([carKey, o]) => [
+              carKey,
+              amount(o.priceId, o.fallback),
+            ]),
           ) as Partial<Record<CarTypeKey, number>>)
         : undefined;
-      return { key: s.key, label: s.label, base: amount(s.priceId, s.fallback), mode: s.mode, overrides };
+      return {
+        key: s.key,
+        label: s.label,
+        base: amount(s.priceId, s.fallback),
+        mode: s.mode,
+        overrides,
+      };
     }),
     zones: CALC_ZONES.map((z) => ({
       key: z.key,
       label: z.label,
       fee: amount(z.priceId, z.fallback),
       perKm: Boolean(z.perKm),
-      nightFee: z.nightOverride ? amount(z.nightOverride.priceId, z.nightOverride.fallback) : undefined,
+      nightFee: z.nightOverride
+        ? amount(z.nightOverride.priceId, z.nightOverride.fallback)
+        : undefined,
     })),
     outCityPerKm: amount("price-out-city", 90),
     nightCallOut: amount(NIGHT_SURCHARGE_PRICE_ID, NIGHT_SURCHARGE_FALLBACK),
-    seasonalSetLargeWheel: amount(SEASONAL_SET_LARGE_WHEEL_PRICE_ID, SEASONAL_SET_LARGE_WHEEL_FALLBACK),
-    seasonalSetRunFlat: amount(SEASONAL_SET_RUN_FLAT_PRICE_ID, SEASONAL_SET_RUN_FLAT_FALLBACK),
+    suvChange: amount(
+      SEASONAL_SET_MEDIUM_WHEEL_PRICE_ID,
+      SEASONAL_SET_MEDIUM_WHEEL_FALLBACK,
+    ),
+    seasonalSetLargeWheel: amount(
+      SEASONAL_SET_LARGE_WHEEL_PRICE_ID,
+      SEASONAL_SET_LARGE_WHEEL_FALLBACK,
+    ),
+    seasonalSetRunFlat: amount(
+      SEASONAL_SET_RUN_FLAT_PRICE_ID,
+      SEASONAL_SET_RUN_FLAT_FALLBACK,
+    ),
   };
 }
 

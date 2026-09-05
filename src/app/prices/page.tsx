@@ -69,11 +69,11 @@ export default async function PricesPage() {
       />
 
       <Box sx={{ bgcolor: "#F5F5F7", py: { xs: 4, md: 8 } }}>
-        <Container>
+        <Container maxWidth='xl'>
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1fr 340px" },
+              gridTemplateColumns: { lg: "1fr 400px" },
               gap: { xs: 3, md: 4 },
               alignItems: "start",
             }}

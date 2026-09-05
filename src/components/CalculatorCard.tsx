@@ -35,7 +35,7 @@ interface CalculatorCardProps {
 }
 
 /** "standard": 12″–18″, priced by car type. "large": 19″–22″, flat price regardless of car type. */
-type WheelSize = "standard" | "large";
+type WheelSize = "standard" | "medium" | "large";
 
 const CAR_SHORT: Record<CarTypeKey, string> = {
   car: "Легковий",
@@ -66,15 +66,32 @@ const labelSx: SxProps<Theme> = {
 };
 
 const selectSx: SxProps<Theme> = {
+  minWidth: 0,
   "& .MuiInputBase-input": {
     p: 0,
     pr: "22px",
     textAlign: "right",
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: 500,
     color: "text.primary",
+    maxWidth: 180,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
   "& .MuiSvgIcon-root": { color: "text.primary", right: 0 },
+};
+
+// 16px on mobile prevents iOS Safari from auto-zooming the viewport on
+// focus (any input with a smaller font-size triggers that zoom).
+const distanceInputSx: SxProps<Theme> = {
+  maxWidth: 90,
+  "& input": {
+    p: 0,
+    textAlign: "right",
+    fontSize: { xs: 16, sm: 15 },
+    fontWeight: 500,
+  },
 };
 
 const toggleGroupSx: SxProps<Theme> = {
@@ -86,7 +103,7 @@ const toggleGroupSx: SxProps<Theme> = {
     border: 0,
     borderRadius: "8px !important",
     py: 1,
-    fontSize: 20,
+    fontSize: 11,
     fontWeight: 700,
     letterSpacing: "0.04em",
     textTransform: "uppercase",
@@ -144,22 +161,25 @@ export default function CalculatorCard({
       const override = seasonal.overrides?.[carType];
       // 19″–22″ is a single flat price in the real list, regardless of car type.
       const seasonalAmount =
-        wheelSize === "large"
-          ? rates.seasonalSetLargeWheel
-          : (override ?? seasonal.base * car.factor);
+        wheelSize === "medium"
+          ? rates.suvChange
+          : wheelSize === "large"
+            ? rates.seasonalSetLargeWheel
+            : (override ?? seasonal.base * car.factor);
       const runFlatFee = runFlat ? rates.seasonalSetRunFlat : 0;
       const zoneAmount =
         night && zone.nightFee !== undefined ? zone.nightFee : zone.fee;
+      // Round trip — the master drives out and back.
       const distanceFee = zone.perKm
-        ? rates.outCityPerKm * Math.max(0, distanceKm)
+        ? rates.outCityPerKm * Math.max(0, distanceKm) * 2
         : 0;
       return round50(seasonalAmount + runFlatFee + zoneAmount + distanceFee);
     }
 
     if (!service) return 0;
+    // Мінімальний виїзд is a flat call-out fee — the same for every car type.
     const minCall = rates.services.find((s) => s.key === "minCall");
-    const minCallOverride = minCall?.overrides?.[carType];
-    const dayCallOut = minCallOverride ?? (minCall?.base ?? 0) * car.factor;
+    const dayCallOut = minCall?.base ?? 0;
     const callOut =
       night && service.mode === "addon" ? rates.nightCallOut : dayCallOut;
 
@@ -167,8 +187,9 @@ export default function CalculatorCard({
       service.mode === "standalone"
         ? (service.overrides?.[carType] ?? service.base)
         : callOut + service.base;
+    // Round trip — the master drives out and back.
     const distanceFee = outOfCity
-      ? rates.outCityPerKm * Math.max(0, distanceKm)
+      ? rates.outCityPerKm * Math.max(0, distanceKm) * 2
       : 0;
     return round50(subtotal + distanceFee);
   }, [
@@ -228,7 +249,7 @@ export default function CalculatorCard({
               color: "rgba(255,255,255,0.72)",
             }}
           >
-            Орієнтовна вартість
+            Вартість
           </Typography>
           <Typography
             sx={{
@@ -251,29 +272,32 @@ export default function CalculatorCard({
           }}
           sx={toggleGroupSx}
         >
-          <ToggleButton value="repair">Ремонт</ToggleButton>
-          <ToggleButton value="reshoe">Перевзуття</ToggleButton>
-        </ToggleButtonGroup>
-
-        {/* car type */}
-        <ToggleButtonGroup
-          exclusive
-          fullWidth
-          value={carType}
-          onChange={(_, value: CarTypeKey | null) => {
-            if (value) setCarType(value);
-          }}
-          sx={toggleGroupSx}
-        >
-          {rates.carTypes.map((c) => (
-            <ToggleButton key={c.key} value={c.key}>
-              {CAR_SHORT[c.key] ?? c.label}
-            </ToggleButton>
-          ))}
+          <ToggleButton size="small" value="repair">
+            Ремонт
+          </ToggleButton>
+          <ToggleButton size="small" value="reshoe">
+            Перевзуття
+          </ToggleButton>
         </ToggleButtonGroup>
 
         {visitType === "repair" ? (
           <>
+            {/* car type */}
+            <ToggleButtonGroup
+              exclusive
+              fullWidth
+              value={carType}
+              onChange={(_, value: CarTypeKey | null) => {
+                if (value) setCarType(value);
+              }}
+              sx={toggleGroupSx}
+            >
+              {rates.carTypes.map((c) => (
+                <ToggleButton key={c.key} value={c.key}>
+                  {CAR_SHORT[c.key] ?? c.label}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
             {/* service */}
             <Box sx={fieldSx}>
               <Typography sx={labelSx}>Послуга</Typography>
@@ -289,7 +313,11 @@ export default function CalculatorCard({
                   <MenuItem
                     key={s.key}
                     value={s.key}
-                    sx={{ whiteSpace: "normal" }}
+                    sx={{
+                      whiteSpace: "wrap",
+                      fontSize: "11px",
+                      lineHeight: 1.3,
+                    }}
                   >
                     {s.label}
                   </MenuItem>
@@ -315,7 +343,7 @@ export default function CalculatorCard({
             </Box>
             {outOfCity && (
               <Box sx={fieldSx}>
-                <Typography sx={labelSx}>Відстань, км</Typography>
+                <Typography sx={labelSx}>Відстань в один бік, км</Typography>
                 <InputBase
                   type="number"
                   value={distance}
@@ -327,15 +355,7 @@ export default function CalculatorCard({
                       "aria-label": "Приблизна відстань у кілометрах",
                     },
                   }}
-                  sx={{
-                    maxWidth: 90,
-                    "& input": {
-                      p: 0,
-                      textAlign: "right",
-                      fontSize: 15,
-                      fontWeight: 500,
-                    },
-                  }}
+                  sx={distanceInputSx}
                 />
               </Box>
             )}
@@ -353,6 +373,7 @@ export default function CalculatorCard({
               sx={toggleGroupSx}
             >
               <ToggleButton value="standard">12″–18″</ToggleButton>
+              <ToggleButton value="medium">16″–18″</ToggleButton>
               <ToggleButton value="large">19″–22″</ToggleButton>
             </ToggleButtonGroup>
 
@@ -395,7 +416,7 @@ export default function CalculatorCard({
             {/* distance — only for "Передмістя" */}
             {isReshoeOutCity && (
               <Box sx={fieldSx}>
-                <Typography sx={labelSx}>Відстань, км</Typography>
+                <Typography sx={labelSx}>Відстань в один бік, км</Typography>
                 <InputBase
                   type="number"
                   value={distance}
@@ -407,15 +428,7 @@ export default function CalculatorCard({
                       "aria-label": "Приблизна відстань у кілометрах",
                     },
                   }}
-                  sx={{
-                    maxWidth: 90,
-                    "& input": {
-                      p: 0,
-                      textAlign: "right",
-                      fontSize: 15,
-                      fontWeight: 500,
-                    },
-                  }}
+                  sx={distanceInputSx}
                 />
               </Box>
             )}
